@@ -29,7 +29,7 @@ const Header = (props) => {
       <nav className="header flex">
       <div className="logo-img">
         <Link exact  to="/">
-        <img src="/images/brand-logo1.png" alt="" className="logo" />
+        <img src="../public/images/brand-logo1.png" alt="" className="logo" />
         </Link>
       </div>
       <SearchBar/>
@@ -58,7 +58,7 @@ const Header = (props) => {
         )}
         {isLoggedIn && <li className="fields">
           <NavLink to="/profile" className="profile-link" activeClassName="active">
-          <img src="images\profile.png" alt="Profile" className="profile-logo" />
+          <img src="../public/images/profile.png" alt="Profile" className="profile-logo" />
           </NavLink>
         </li>}
       </ul>
