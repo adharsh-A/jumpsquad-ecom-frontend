@@ -21,7 +21,7 @@ const Products = (props) => {
 
   useEffect(() => {
     axios
-      .get(`${localhost}/api/products/all`, { timeout: 25000 })
+      .get(`${localhost}/api/products/all`, { timeout: 20000 })
       .then((response) => {
         addItems(response.data.products); // Assuming `response.data` contains the products
         setLoading(false);

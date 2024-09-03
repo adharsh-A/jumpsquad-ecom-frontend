@@ -70,9 +70,9 @@
 		
 			if (!isLogin) {
 			  formData.append('repeatPassword', formState.repeatPassword);
-			  response = await axios.post(`${localhost}/api/auth/signup`,  { timeout: 20000 },formData);
+			  response = await axios.post(`${localhost}/api/auth/signup`,  { timeout: 30000 },formData);
 			} else {
-			  response = await axios.post(`${localhost}/api/auth/login`,{ timeout: 20000 },formData);
+			  response = await axios.post(`${localhost}/api/auth/login`,{ timeout: 30000 },formData);
 			} 
 		
 			const responseData = response.data;
