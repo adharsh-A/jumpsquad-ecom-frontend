@@ -16,7 +16,7 @@ const ProductList = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `${localhost}/api/products/all`
+          `${localhost}/api/products/all`, { timeout: 5000 }
         );
         setProducts(response.data.products);
         console.log(products);

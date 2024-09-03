@@ -56,7 +56,7 @@ const ProductForm = () => {
 
 
     try {
-      const response=await axios.post(`${localhost}/api/products/admin/add`, formData,{
+      const response=await axios.post(`${localhost}/api/products/admin/add`, { timeout: 5000 }, formData,{
         headers: {
           Authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data"
