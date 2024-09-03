@@ -85,7 +85,7 @@
 		catch (err) {
 			
 /* 			setError(err.response.data.message);
- */			toast.error(`${err.response.data.message}`, {
+ */			toast.error(error, {
 				position: "bottom-right",
 				autoClose: 2000,
 			});
