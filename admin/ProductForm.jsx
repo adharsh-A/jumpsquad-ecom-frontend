@@ -44,7 +44,6 @@ const ProductForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let responseData;
     const formData = new FormData();
     formData.append("title", product.title);
     formData.append("description", product.description);
@@ -62,10 +61,10 @@ const ProductForm = () => {
         },
       }
     );
-    responseData=await response.data;
+    const responseData=response.data;
     toast.success(`${responseData.message}`);  
   } catch (error) {
-    const errorMessage = responseData.message|| "Something went wrong!";
+    const errorMessage = error.response?.data?.message || "Something went wrong!";
     toast.error(errorMessage, {
       position: "bottom-right",
       autoClose: 2000,
