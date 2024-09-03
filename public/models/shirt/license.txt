@@ -1,0 +1,11 @@
+Model Information:
+* title:	Balenciaga t-shirt
+* source:	https://sketchfab.com/3d-models/balenciaga-t-shirt-84d43eb0633e44e183b44e31da28f436
+* author:	Ahmad Riazi (https://sketchfab.com/ahmadriazi)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Balenciaga t-shirt" (https://sketchfab.com/3d-models/balenciaga-t-shirt-84d43eb0633e44e183b44e31da28f436) by Ahmad Riazi (https://sketchfab.com/ahmadriazi) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

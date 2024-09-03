@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--accent);
+  }
+  :root {
+    --text: #dec0d9;
+    --background: #6666a9;
+    --primary: #12104dbb;
+    --secondary: #6560c3;
+    --accent: #4d4c6b;
+  }
+  .header {
+    justify-content: space-between;
+    margin-top: 0em;
+    text-align: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.47);
+    max-height: 3.5rem;
+  }
+  .nav-link {
+    border-radius: 50px;
+    background-color:var(--background);
+    padding: 0.3rem 0.9rem;
+    color: inherit; /* Inherit color from the parent */
+    text-decoration: none; /* Remove underline */
+  }
+
+  .nav-link.active {
+    background-color: var(--primary);
+    color:whitesmoke; /* Change to your desired active color */
+    border: 1px rgb(155, 104, 206) solid;
+    box-shadow: 0px 0px 10px rgb(111, 62, 184);
+  }
+   .logout-button{
+    border-radius: 50px;
+    background-color:var(--background);
+    padding: 0.3rem 0.9rem;
+    color: inherit; /* Inherit color from the parent */
+    text-decoration: none; /* Remove underline */
+
+  }
+  .profile-link {
+    border-radius: 50px;
+    background-color:transparent;
+    position: absolute;
+    align-self: center;
+  top: .5rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+
+    color: inherit; /* Inherit color from the parent */
+    text-decoration: none; /* Remove underline */
+  }
+   .profile-link .profile-logo{
+    width: 2.3rem; /* Adjust size as needed */
+    position: relative;
+    border: 3px rgb(31, 5, 57) solid;
+border-radius: 50%;
+  }
+ 
+ 
+  /* Add any other styles you need for your header elements */
+  .header-elements {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    padding-right: 3rem;
+  }
+  
+ 
+  .header-elements .fields {
+    margin-right: 15px; /* Add some spacing between the items */
+  }
+.hero{
+display: flex;
+margin-top: 10%;
+margin-left: 50%;
+margin-bottom: 100px;
+}
+.intro>h1{
+  margin-bottom: 1rem;
+  color: wheat;
+  font-family: RobotoMono;
+  font-size: 4rem;
+  margin: 0;
+  font-stretch: condensed;
+  text-shadow: wheat;
+}
+.intro > h1 span {
+
+          /** TEXT GRADIENT */ color: #c686b1; background-image: -webkit-linear-gradient(45deg, #c686b1 23%, #edb13f 72%, #b87f99 98%, #5e13e5 88%); background-clip: text; -webkit-background-clip: text; text-fill-color: transparent; -webkit-text-fill-color: transparent;
+          
+        
+}
+
+.intro>h3{
+  line-height: 30px;
+  font-family: RobotoMono;
+  font-size: 1.4rem;
+  font-weight: 800;
+  
+
+
+
+          /** TEXT GRADIENT */ color: #c57180; background-image: -webkit-linear-gradient(45deg, #c57180 3%, #f6d27d 82%, #293250 31%, #a92fca 53%); background-clip: text; -webkit-background-clip: text; text-fill-color: transparent; -webkit-text-fill-color: transparent;
+          
+                  
+                  
+                  
+        
+}
+.btn-shop{
+  width: auto;
+  cursor: pointer;
+  font-size: 1.2rem;
+  background-color: var(--accent);
+  padding: 10px 10px;
+  outline: 0;
+  border: 0;
+  border-radius: 20px;
+}
+.btn-shop:hover{
+  color: wheat;
+  background-color: grey;
+  box-shadow: 10px 10px 10px wheat;
+}
+  .intro{
+    text-align: right;
+    width: 70%;
+  }
+  .flex{
+    display: flex;
+  }
+  .logo{
+    filter: brightness(1) invert(1); /* Example of using filter to invert logo color based on background */
+    max-width: 100px;
+  }
+
+  
+  
+  #container3D canvas {
+   
+    background-color: #0a092f00;
+    margin-top: 60px;
+    width: 70vw !important;
+    height: 70vh !important;
+    position: absolute;
+    top: 0;
+    left: -90px;
+  }
+  

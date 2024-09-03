@@ -1,0 +1,21 @@
+:root {
+    --text: #dec0d9;
+    --background: #6666a9;
+    --primary: #12104dbb;
+    --secondary: #6560c3;
+    --accent: #4d4c6b;
+  }
+  .btn{
+    cursor: pointer;
+    padding: 10px 15px;
+    outline: 0;
+    border: 0;
+    font-size: 1rem;
+    border-radius: 15px;
+    background-color: var(--background);
+    z-index: 1;
+  }
+  .btn:hover{
+background-color: var(--text);
+color: var(--primary);
+  }

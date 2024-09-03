@@ -1,0 +1,86 @@
+:root {
+  --text: #dec0d9;
+  --background: #6666a9;
+  --primary: #12104dbb;
+  --secondary: #6560c3;
+  --accent: #4d4c6b;
+}
+.modal {
+    width: 300px;
+    height: fit-content;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 33%;
+    left: 33%;
+    gap: 20px;
+    padding: 30px;
+    position: absolute;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
+    z-index: 10;
+  }
+  .modal-content {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .modal-heading {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgb(27, 27, 27);
+  }
+  .modal-description {
+    font-weight: 100;
+    color: rgb(102, 102, 102);
+  }
+  .modal-button-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .modal-button {
+    width: 50%;
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .primary {
+    background-color: var(--primary);
+    color: white;
+  }
+  .primary:hover {
+    background-color: var(--background);
+  }
+  .secondary {
+    background-color: #ddd;
+  }
+  .secondary:hover {
+    background-color: rgb(197, 197, 197);
+  }
+  .exit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+  .exit-button:hover svg {
+    fill: black;
+  }
+  .exit-button svg {
+    fill: rgb(175, 175, 175);
+  }
+  
