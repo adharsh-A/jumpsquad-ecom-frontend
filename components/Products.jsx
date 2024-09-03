@@ -24,8 +24,10 @@ const Products = (props) => {
       .get(`${localhost}/api/products/all`)
       .then((response) => {
         addItems(response.data.products); // Assuming `response.data` contains the products
+        setLoading(false);
       })
       .catch((error) => {
+        setLoading(false);
         console.error("Error fetching data:", error);
         toast.error(`Network response was not ok`, {
           position: "bottom-right",
