@@ -12,7 +12,7 @@ const ProductCard = (props) => {
   };
   let localhost;
   if(process.env.NODE_ENV === 'production'){
-    localhost = `${process.env.Link}`;
+    localhost = `https://jumpsquad-backend.vercel.app`;
   }else{
     localhost = `http://localhost:5000`;
   }
