@@ -53,12 +53,14 @@ const ProductForm = () => {
       formData.append("image", product.image); // Append the file to FormData
     }
     console.log(formData);
+
+
     try {
       const response=await axios.post(`${localhost}/api/products/admin/add`, formData,{
         headers: {
           Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data",
-        },
+                    "Content-Type": "multipart/form-data"
+        }
       }
     );
     const responseData=response.data;
@@ -70,6 +72,7 @@ const ProductForm = () => {
       autoClose: 2000,
     });
   }
+  
 
   };
 
