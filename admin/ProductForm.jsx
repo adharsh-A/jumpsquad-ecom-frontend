@@ -64,7 +64,7 @@ const ProductForm = () => {
     const responseData=response.data;
     toast.success(`${responseData.message}`);  
   } catch (error) {
-    const errorMessage = error.response?.data?.message || "Something went wrong!";
+    const errorMessage = responseData.message|| "Something went wrong!";
     toast.error(errorMessage, {
       position: "bottom-right",
       autoClose: 2000,
