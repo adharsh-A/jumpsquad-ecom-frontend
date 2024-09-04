@@ -12,7 +12,7 @@ const ProductCard = (props) => {
   };
   let localhost;
   if(process.env.NODE_ENV === 'production'){
-    localhost = `https://jumpsquad-backend.vercel.app`;
+    localhost = `http://jumpsquad.ap-south-1.elasticbeanstalk.com`;
   }else{
     localhost = `http://localhost:8080`;
   }
