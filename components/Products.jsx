@@ -11,7 +11,7 @@ const Products = (props) => {
   const { addItems, items } = useContext(CartContext);
   const [loading, setLoading] = useState(true);
 
-	const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
+	const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
   useEffect(() => {
     axios
       .get(`${localhost}/api/products/all`)

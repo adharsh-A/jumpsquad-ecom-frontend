@@ -35,7 +35,7 @@ const ProductForm = () => {
       setProduct({ ...product, [e.target.name]: e.target.value });
     }
   };
-	const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
+	const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
 
   const handleSubmit = async (e) => {
     e.preventDefault();

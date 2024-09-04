@@ -56,7 +56,7 @@ const PDetails = () => {
               }
   }
   
-	const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
+	const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
 
   const imageUrl = `${localhost}/${currentProduct.image}`;
   return (

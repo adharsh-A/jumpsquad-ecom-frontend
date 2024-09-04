@@ -54,7 +54,7 @@
 		return; // Stop form submission if there are errors
 		}
 
-	const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
+	const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
 
 	
 		try {

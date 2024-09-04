@@ -10,7 +10,7 @@ const ProductCard = (props) => {
     }
     return words.slice(0, wordLimit).join(' ') + '...';
   };
-	const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
+	const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
 
   const imageUrl = `${localhost}/${props.item.image}`;
 

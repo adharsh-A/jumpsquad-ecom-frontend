@@ -8,7 +8,7 @@ const CartItem = (props) => {
 useEffect(() => {
   setProductTotal(item.price*item.quantity);
 },[item])
-const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
+const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
 
   return (
     <div className="product" id={props.key}>
