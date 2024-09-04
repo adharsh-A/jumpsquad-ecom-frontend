@@ -12,8 +12,6 @@ const Products = (props) => {
   const [loading, setLoading] = useState(true);
 
 	const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
-
-
   useEffect(() => {
     axios
       .get(`${localhost}/api/products/all`)
