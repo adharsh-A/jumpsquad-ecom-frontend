@@ -57,7 +57,7 @@
 		if(process.env.NODE_ENV === 'production'){
 			localhost = `https://jumpsquad-backend.vercel.app`;
 		}else{
-		  localhost = `http://localhost:5000`;
+		  localhost = `http://localhost:8080`;
 		}
 
 
@@ -70,9 +70,9 @@
 		
 			if (!isLogin) {
 			  formData.append('repeatPassword', formState.repeatPassword);
-			  response = await axios.post(`${localhost}/api/auth/signup`,  { timeout: 30000 },formData);
+			  response = await axios.post(`${localhost}/api/auth/signup`,formData,  { timeout: 30000 });
 			} else {
-			  response = await axios.post(`${localhost}/api/auth/login`,{ timeout: 30000 },formData);
+			  response = await axios.post(`${localhost}/api/auth/login`,formData,{ timeout: 30000 });
 			} 
 		
 			const responseData = response.data;

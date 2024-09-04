@@ -60,7 +60,7 @@ const PDetails = () => {
   if(process.env.NODE_ENV === 'production'){
     localhost = `https://jumpsquad-backend.vercel.app`;
   }else{
-    localhost = `http://localhost:5000`;
+    localhost = `http://localhost:8080`;
   }
   const imageUrl = `${localhost}/${currentProduct.image}`;
   return (

@@ -8,9 +8,15 @@ const CartItem = (props) => {
 useEffect(() => {
   setProductTotal(item.price*item.quantity);
 },[item])
+let localhost;
+if(process.env.NODE_ENV === 'production'){
+  localhost = `${process.env.Link}`;
+}else{
+  localhost = `http://localhost:8080`;
+}
   return (
     <div className="product" id={props.key}>
-<img src={`http://localhost:5000/${props.image}`} alt="" />
+<img src={`${localhost}/${props.image}`} alt="" />
     <div>
       <span>{props.title}</span>
       

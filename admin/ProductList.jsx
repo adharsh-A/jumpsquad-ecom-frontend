@@ -9,7 +9,7 @@ const ProductList = () => {
   if(process.env.NODE_ENV === 'production'){
     localhost = `${process.env.Link}`;
   }else{
-    localhost = `http://localhost:5000`;
+    localhost = `http://localhost:8080`;
   }
 
   useEffect(() => {

@@ -10,13 +10,12 @@ import { CartContext } from "../context/CartContext";
 const Products = (props) => {
   const { addItems, items } = useContext(CartContext);
   const [loading, setLoading] = useState(true);
-  const [display, setDisplay] = useState([]);
 
   let localhost;
   if (process.env.NODE_ENV === "production") {
     localhost = `https://jumpsquad-backend.vercel.app`;
   } else {
-    localhost = `http://localhost:5000`;
+    localhost = `http://localhost:8080`;
   }
 
   useEffect(() => {
