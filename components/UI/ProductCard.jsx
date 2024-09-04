@@ -10,12 +10,8 @@ const ProductCard = (props) => {
     }
     return words.slice(0, wordLimit).join(' ') + '...';
   };
-  let localhost;
-  if(process.env.NODE_ENV === 'production'){
-    localhost = `http://jumpsquad.ap-south-1.elasticbeanstalk.com`;
-  }else{
-    localhost = `http://localhost:8080`;
-  }
+	const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
+
   const imageUrl = `${localhost}/${props.item.image}`;
 
 return (<Link to={`/${props.item._id}/details`} className="product-card">

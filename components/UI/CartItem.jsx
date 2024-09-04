@@ -8,12 +8,8 @@ const CartItem = (props) => {
 useEffect(() => {
   setProductTotal(item.price*item.quantity);
 },[item])
-let localhost;
-if(process.env.NODE_ENV === 'production'){
-  localhost = `${process.env.Link}`;
-}else{
-  localhost = `http://localhost:8080`;
-}
+const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
+
   return (
     <div className="product" id={props.key}>
 <img src={`${localhost}/${props.image}`} alt="" />

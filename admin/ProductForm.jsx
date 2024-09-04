@@ -35,12 +35,7 @@ const ProductForm = () => {
       setProduct({ ...product, [e.target.name]: e.target.value });
     }
   };
-  let localhost;
-  if(process.env.NODE_ENV === 'production'){
-    localhost = `http://jumpsquad.ap-south-1.elasticbeanstalk.com`;
-  }else{
-    localhost = `http://localhost:8080`;
-  }
+	const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
 
   const handleSubmit = async (e) => {
     e.preventDefault();

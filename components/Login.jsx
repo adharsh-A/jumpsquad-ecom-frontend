@@ -53,14 +53,10 @@
 		setErrors(newErrors);
 		return; // Stop form submission if there are errors
 		}
-		let localhost;
-		if(process.env.NODE_ENV === 'production'){
-			localhost = `http://jumpsquad.ap-south-1.elasticbeanstalk.com`;
-		}else{
-		  localhost = `http://localhost:8080`;
-		}
 
+	const localhost = process.env.BACKEND_URL || 'http://localhost:8080';
 
+	
 		try {
 			const formData = new FormData();
 			formData.append('username', formState.username);
