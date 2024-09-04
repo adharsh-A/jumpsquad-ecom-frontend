@@ -12,7 +12,7 @@ const Products = (props) => {
   const [loading, setLoading] = useState(true);
 
   let localhost;
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === 'production') {
     localhost = `http://jumpsquad.ap-south-1.elasticbeanstalk.com`;
   } else {
     localhost = `http://localhost:8080`;
@@ -20,7 +20,7 @@ const Products = (props) => {
 
   useEffect(() => {
     axios
-      .get(`${localhost}/api/products/all`, { timeout: 20000 })
+      .get(`${localhost}/api/products/all`)
       .then((response) => {
         addItems(response.data.products); // Assuming `response.data` contains the products
         setLoading(false);
