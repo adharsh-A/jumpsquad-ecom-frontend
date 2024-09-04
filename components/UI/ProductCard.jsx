@@ -14,7 +14,7 @@ const ProductCard = (props) => {
 
   const imageUrl = `${localhost}/${props.item.image}`;
 
-return (<Link to={`/${props.item._id}/details`} className="product-card">
+return (<Link to={`/${props.item._id}/details`} className="product-card autoshow">
   <div className="card" id={props.item._id}>
   <div className="card-img">
     <img src={imageUrl} alt="" className="card-img-img"/>

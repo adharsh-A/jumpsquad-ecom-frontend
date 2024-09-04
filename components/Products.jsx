@@ -4,7 +4,7 @@ import ProductList from "./UI/ProductList";
 import Loading from "../components/UI/Loading";
 import { toast } from "react-toastify";
 import axios from "axios";
-
+import About from "../components/About";
 import { CartContext } from "../context/CartContext";
 
 const Products = (props) => {
@@ -37,6 +37,7 @@ const Products = (props) => {
         <>
           <Hero />
           <ProductList />
+          <About/>
         </>
       )}
     </>

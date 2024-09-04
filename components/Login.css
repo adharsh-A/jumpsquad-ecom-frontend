@@ -1,5 +1,5 @@
 .form-container {
-  width: 420px;
+  width: 350px;
   max-height: min-content;
   margin: 2rem auto;
   border-radius: 0.75rem;
@@ -27,7 +27,7 @@
 
 .input-group label {
   display: block;
-  color: rgb(211, 220, 235);
+  color: rgb(255, 255, 255);
   margin-bottom: 4px;
 }
 

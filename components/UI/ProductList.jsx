@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/auth-context";
     
     const ProductList = (props) => {
       const {isLoggedIn} = useContext(AuthContext);
-      const [visibleItemsCount, setVisibleItemsCount] = useState(4);
+      const [visibleItemsCount, setVisibleItemsCount] = useState(8);
         const [fetchedItems, setFetchedItems] = useState([]);  
         const { addToCart,items } = useContext(CartContext);
 
