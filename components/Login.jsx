@@ -169,8 +169,8 @@
 				value={formState.password}
 				className={errors.password ? 'error' : ''}
 				/>
-				<span className="input-icon" style={{position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)'}} onClick={togglePasswordVisibility}>
-					<i className={showPassword ? "fa fa-eye-slash" : "fa fa-eye"} style={{cursor: 'pointer'}}></i>
+				<span className="input-icon" style={{position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)' }} onClick={togglePasswordVisibility}>
+				<i className={showPassword ? "fa fa-eye-slash icon-white" : "fa fa-eye icon-white"} style={{cursor: 'pointer',color: 'white !important'}}></i>
 				</span>
 				
  
@@ -237,7 +237,7 @@
 			</button>
 			</div>
 			<p className="signup">
-			{isLogin ? "Don't have an account" : "Already have an account"}
+			{isLogin ? "Don't have an account? " : "Already have an account"}
 			<a rel="noopener noreferrer" onClick={(e) => stateChange(e)} className="">
 				{isLogin ? "SignUp" : "Login"}
 			</a>
