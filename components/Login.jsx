@@ -79,9 +79,10 @@
 }
 
 		catch (err) {
-			
+			console.log('Response:', response.data);
+
 /* 			setError(err.response.data.message);
- */			toast.error(error, {
+ */			toast.error(err, {
 				position: "bottom-right",
 				autoClose: 2000,
 			});
