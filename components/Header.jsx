@@ -10,7 +10,7 @@ const Header = (props) => {
 
   const {role,isLoggedIn,logout} =useContext(AuthContext);
   const [open, setOpen] = React.useState(false);
-  const navigate = useNavigate
+  const navigate = useNavigate();
   const logoutHandler = () => {
     logout();  // Call the logout function from context
     setOpen(false);
