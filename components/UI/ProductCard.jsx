@@ -10,9 +10,8 @@ const ProductCard = (props) => {
     }
     return words.slice(0, wordLimit).join(' ') + '...';
   };
-	const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
 
-  const imageUrl = `${localhost}/${props.item.image}`;
+  const imageUrl = `${props.item.image}`;
 
 return (<Link to={`/${props.item._id}/details`} className="product-card autoshow">
   <div className="card" id={props.item._id}>

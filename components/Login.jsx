@@ -61,14 +61,23 @@
 			const formData = new FormData();
 			formData.append('username', formState.username);
 			formData.append('password', formState.password);
-			formData.append('repeatPassword', formState.repeatPassword);
-		
+			
 			let response;
-		
+			
 			if (!isLogin) {
-			  response = await axios.post(`${localhost}/api/auth/signup`,formData);
+				formData.append('repeatPassword', formState.repeatPassword);
+			  response = await axios.post(`${localhost}/api/auth/signup`,formData, {
+				headers: {
+				  'Content-Type': 'multipart/form-data',
+				}
+			}
+			);
 			} else {
-			  response = await axios.post(`${localhost}/api/auth/login`,formData);
+			  response = await axios.post(`${localhost}/api/auth/login`,formData, {
+				headers: {
+				  'Content-Type': 'multipart/form-data',
+				}
+			});
 			} 
 		
 			const responseData = response.data;

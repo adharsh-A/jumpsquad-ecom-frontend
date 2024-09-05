@@ -8,11 +8,11 @@ const CartItem = (props) => {
 useEffect(() => {
   setProductTotal(item.price*item.quantity);
 },[item])
-const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
 
+const imageUrl = `${props.image}`
   return (
     <div className="product" id={props.key}>
-<img src={`${localhost}/${props.image}`} alt="" />
+<img src={imageUrl} alt="" />
     <div>
       <span>{props.title}</span>
       

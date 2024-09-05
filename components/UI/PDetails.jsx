@@ -56,9 +56,8 @@ const PDetails = () => {
               }
   }
   
-	const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
 
-  const imageUrl = `${localhost}/${currentProduct.image}`;
+  const imageUrl = `${currentProduct.image}`;
   return (
     loading ? <Loading /> : (
       <div className="container">
