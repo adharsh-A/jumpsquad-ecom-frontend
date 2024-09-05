@@ -14,6 +14,7 @@ const Profile = lazy(() => import("../components/Profile.jsx"));
 const About = lazy(() => import("../components/About.jsx"));
 const Login = lazy(() => import("../components/Login.jsx"));
 const ProductList = lazy(() => import("../admin/ProductList.jsx"));
+const ResultsComponent = lazy(() => import("../components/ResultComponent.jsx"));
 import Loading from "../components/UI/Loading";
 import { useAuth } from "../hooks/auth-hook.js";
 import { AuthContext } from "../context/auth-context.js";
@@ -59,6 +60,8 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/admin" element={<ProductList />} />
+                <Route path="/results" element={<ResultsComponent />} />
+
               </Routes>
             </Suspense>
           </BrowserRouter>

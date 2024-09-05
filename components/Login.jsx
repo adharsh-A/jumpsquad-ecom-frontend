@@ -28,6 +28,7 @@
 
 	const loginHandler = async e => {
 		e.preventDefault();
+		
 		const newErrors = {};
 
 		if (!formState.username) {
@@ -119,7 +120,13 @@
 		e.preventDefault();
 		setLogin(!isLogin);
 	};
-
+	const handleKeyDown = (e) => {
+		// Trigger loginHandler when "Enter" is pressed
+		if (e.key === 'Enter') {
+		  e.preventDefault();
+		  loginHandler(e); // Call loginHandler function
+		}
+	  };
 
 	return (<>
 
@@ -127,7 +134,7 @@
 		<div>
 		<div className="form-container">
 			<p className="title">{isLogin ? "Login" : "Register"}</p>
-			<form className="form" onSubmit={(e) => loginHandler(e)}>
+			<form className="form" onSubmit={(e) => loginHandler(e)}onKeyDown={(e)=>handleKeyDown(e)}>
 			<div className="input-group">
 				<label htmlFor="username" className={errors.username ? 'tooltip' : ''}>
 					Username

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink,Link, useNavigate } from "react-router-dom";
 import  SearchBar  from "../components/UI/SearchBar";
+import Input from "./UI/Input";
 import Animation from "../components/Animation";
 import "../css/style.css";
 import { AuthContext } from "../context/auth-context";
@@ -32,7 +33,7 @@ const Header = (props) => {
         <img src="/images/brand-logo1.png" alt="" className="logo" />
         </Link>
       </div>
-      <SearchBar/>
+      <Input/>
       <ul className="header-elements flex">
         <li className="fields">
           <NavLink exact to="/" className="nav-link" activeClassName="active">Home</NavLink>
