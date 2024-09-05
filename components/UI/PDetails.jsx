@@ -73,7 +73,7 @@ const PDetails = () => {
             <img src={imageUrl} alt={currentProduct.title} />
           </div>
           </Tilt>
-          <div>
+          <div className='details'>
             <h1>{currentProduct.title}</h1>
             <p>{currentProduct.description}</p>
             <div className="button-wrapper">

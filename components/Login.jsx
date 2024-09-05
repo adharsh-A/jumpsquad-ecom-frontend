@@ -88,7 +88,6 @@
 }
 
 		catch (err) {
-			console.log('Response:', response.data);
 
 /* 			setError(err.response.data.message);
  */			toast.error(err, {

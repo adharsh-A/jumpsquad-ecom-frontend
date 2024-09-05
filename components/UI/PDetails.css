@@ -5,6 +5,12 @@
   --secondary: #6560c3;
   --accent: #4d4c6b;
 }
+.details{
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  margin-left: 20px;
+}
 .back-btn {
   display: flex;
   height: 3em;
