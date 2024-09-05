@@ -61,14 +61,14 @@
 			const formData = new FormData();
 			formData.append('username', formState.username);
 			formData.append('password', formState.password);
+			formData.append('repeatPassword', formState.repeatPassword);
 		
 			let response;
 		
 			if (!isLogin) {
-			  formData.append('repeatPassword', formState.repeatPassword);
-			  response = await axios.post(`${localhost}/api/auth/signup`,formData,  { timeout: 30000 });
+			  response = await axios.post(`${localhost}/api/auth/signup`,formData);
 			} else {
-			  response = await axios.post(`${localhost}/api/auth/login`,formData,{ timeout: 30000 });
+			  response = await axios.post(`${localhost}/api/auth/login`,formData);
 			} 
 		
 			const responseData = response.data;
