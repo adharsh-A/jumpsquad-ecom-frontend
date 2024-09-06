@@ -3,10 +3,48 @@
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  background-color: var(--accent);
+  background: #000000;
+  --gap: 5em;
+  --line: 1px;
+  --color: rgba(255, 255, 255, 0.277);
+  background-image: linear-gradient(
+      -90deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    ),
+    linear-gradient(
+      0deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    );
+  background-size: var(--gap) var(--gap);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  animation: backgroundAnimation 3s infinite; /* Animation name, duration, and repetition */
 }
+
+
+::-webkit-scrollbar{
+  width: .6rem;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--text);
+  padding: 10px;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track{
+  background-color: #68d8ef50;
+}
+/* ::-webkit-scrollbar-button {
+  background-color: #161515; 
+  border-radius: 50px; 
+} */
+
+
+
 :root {
   --text: #dec0d9;
   --background: #6666a9;
@@ -15,17 +53,25 @@ body {
   --accent: #4d4c6b;
 }
 .header {
+  margin-top: 1rem;
+  margin-right: 3rem;
+  margin-left: 3rem;
+  border-radius: 300px;
   justify-content: space-between;
-  margin-top: 0em;
   text-align: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.47);
-  max-height: 3.5rem;
+  padding: 2px 0px;
+  background-color: rgba(170, 169, 169, 0.54);
+  backdrop-filter: blur(5px); /* Add this line for background blur */
+  -webkit-backdrop-filter: blur(10px); /* Add this line for background blur in Safari */
+  position:sticky;
+  top: 1rem; /* Sticks to the top of the viewport */
+  z-index: 1;
 }
 .nav-link {
   border-radius: 50px;
-  background-color: var(--background);
-  padding: 0.3rem 0.9rem;
+  background-color: var(--text);
+  padding: 0.4rem 0.9rem;
   color: inherit; /* Inherit color from the parent */
   text-decoration: none; /* Remove underline */
 }
@@ -38,8 +84,8 @@ body {
 }
 .logout-button {
   border-radius: 50px;
-  background-color: var(--background);
-  padding: 0.3rem 0.9rem;
+  background-color: var(--text);
+  padding: 0.4rem 0.9rem;
   color: inherit; /* Inherit color from the parent */
   text-decoration: none; /* Remove underline */
 }
@@ -56,9 +102,9 @@ body {
   text-decoration: none; /* Remove underline */
 }
 .profile-link .profile-logo {
+  margin-top: .4rem;
   width: 2.3rem; /* Adjust size as needed */
   position: relative;
-  border: 3px rgb(31, 5, 57) solid;
   border-radius: 50%;
 }
 
@@ -164,7 +210,7 @@ body {
 
 #container3D canvas {
   background-color: #0a092f00;
-  margin-top: 60px;
+  margin-top: 100px;
   width: 70vw !important;
   height: 70vh !important;
   position: absolute;

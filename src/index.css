@@ -4,8 +4,8 @@ html{
     scroll-padding-top: 6rem;
     scroll-snap-type: y mandatory;
     ::selection{
-        background-color: #03e2ffaf;
-        color: #290000b8;}
+        background-color: #b262eb7c;
+        color: #efeeee;}
 }
 body {
     margin: 0;

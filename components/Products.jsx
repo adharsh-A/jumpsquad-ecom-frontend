@@ -9,10 +9,12 @@ import { CartContext } from "../context/CartContext";
 
 const Products = (props) => {
   const { addItems, items } = useContext(CartContext);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
 	const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
   useEffect(() => {
+    if (items.length === 0) {
+    setLoading(true);
     axios
       .get(`${localhost}/api/products/all`)
       .then((response) => {
@@ -27,7 +29,9 @@ const Products = (props) => {
           autoClose: 2000,
         });
       });
-  }, []);
+    }
+
+  }, [items,addItems]);
 
   return (
     <>

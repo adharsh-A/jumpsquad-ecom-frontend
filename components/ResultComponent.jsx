@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import ProductCard from "./UI/ProductCard";
 import { CartContext } from "../context/CartContext";
+import { toast } from "react-toastify";
 
 const ResultsComponent = () => {
-  const {isLoggedIn}=useContext(CartContext );
+  const {isLoggedIn,addToCart}=useContext(CartContext );
   const location = useLocation();
   const { filteredData } = location.state || { filteredData: [] }; // Get the filtered data from the location state
 
@@ -21,7 +22,7 @@ const ResultsComponent = () => {
   }
   return (
     <div>
-      <h1 style={{ textAlign: "center" , marginTop: "20px",fontSize: "30px",fontWeight:"50",colorGradient: "linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%)",}}>Search Results</h1>
+      <h1 style={{ textAlign: "center" , marginTop: "20px",fontSize: "30px",fontWeight:"50",color:"whitesmoke"}}>Search Results</h1>
       {filteredData.length > 0 ? (
       <div className="product-list" style={{ display: "flex", flexWrap: "wrap" ,margin: "0px 60px"}} >
           {filteredData.map((item) => (

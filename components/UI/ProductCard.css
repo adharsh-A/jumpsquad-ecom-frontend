@@ -7,7 +7,8 @@
   width: 220px;
   height: fit-content;
   padding: .8em;
-  background-color: var(--text);
+/*   background-color: var(--text);
+ */  background-color: #dec0d9;
   color: var(--primary);
   position: relative;
   overflow: visible;

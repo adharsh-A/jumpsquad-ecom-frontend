@@ -110,8 +110,19 @@ p {
   letter-spacing: 2px;
   margin-right: 15px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.1s ease;
+
 }
 
+.btn:hover {
+  background-color: rgb(247, 200, 114);
+  transform: scale(1.01); /* Slightly enlarge the button */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+.btn:active {
+  transform: scale(0.95); /* Shrinks slightly when clicked */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Reduces shadow to show a pressed effect */
+}
 .btn + .btn {
   margin-left: 10px;
 }
@@ -123,14 +134,7 @@ p {
   transition: all 0.3s ease;
 }
 
-.outline:hover {
-  font-weight: 700;
-  transform: scale(1.125);
-  color: rgb(2, 2, 2);
-  border-color: wheat;
-  transition: all 0.3s ease;
-  background-color: var(--secondary);
-}
+
 
 .fill {
   background: var(--accent);
@@ -140,11 +144,4 @@ p {
   transition: all 0.3s ease;
 }
 
-.fill:hover {
-  transform: scale(1.125);
-  border: 1px solid black;
-  color: black;
-  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.125));
-  transition: all 0.3s ease;
-  background-color: var(--secondary);
-}
+

@@ -133,7 +133,7 @@
 						
 		<div>
 		<div className="form-container">
-			<p className="title">{isLogin ? "Login" : "Register"}</p>
+			<p className="title" style={{ fontFamily: 'poppins' ,fontSize: '1.5rem',marginBottom: '1rem'}}>{isLogin ? "Login" : "Register"}</p>
 			<form className="form" onSubmit={(e) => loginHandler(e)}onKeyDown={(e)=>handleKeyDown(e)}>
 			<div className="input-group">
 				<label htmlFor="username" className={errors.username ? 'tooltip' : ''}>

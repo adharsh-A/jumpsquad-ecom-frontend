@@ -52,6 +52,7 @@ const StyledWrapper = styled.div`
   width: fit-content;
   height: fit-content;
   background-color: #5c6370;
+  opacity: 0.8;
   border-radius: 0.8em;
   overflow: hidden;
 }
