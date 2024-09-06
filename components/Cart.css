@@ -19,7 +19,7 @@
   }
   .card-cart {
     width: 400px;
-    background: #FFFFFF;
+    background: #dfdedf;
     box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01), 0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09), 0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
   }
   
@@ -51,6 +51,7 @@
     display: grid;
     grid-template-columns: 60px 1fr 80px 1fr;
     gap: 10px;
+    margin-bottom: 20px;
   }
   
   .cart .products .product span {
