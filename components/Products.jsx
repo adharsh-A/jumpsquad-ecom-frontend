@@ -30,7 +30,6 @@ const Products = (props) => {
         });
       });
     }
-
   }, [items,addItems]);
 
   return (

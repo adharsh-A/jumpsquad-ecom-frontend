@@ -8,7 +8,7 @@ const Cart = () => {
   const [checkoutData, setCheckoutData] = useState("");
   const [open, setOpen] = useState(false);
   const { cartItems, addToCart, calculateTotalPrice } = useContext(CartContext);
-  const totalPrice = calculateTotalPrice();
+  const totalPrice = calculateTotalPrice(cartItems);
   const deliveryFee = 99;
   const price = (totalPrice + deliveryFee).toFixed(2);
 
@@ -23,7 +23,7 @@ const Cart = () => {
 
   const addQuantity = (e, item) => {
     e.preventDefault();
-    addToCart({ ...item, quantity: 1 });
+    addToCart({ ...item, quantity: +1 });
   };
   const productsForCart = cartItems.map((item) => (
     <CartItem
