@@ -21,12 +21,10 @@ import { toast } from 'react-toastify';
 
         if (response.status === 200) {
             setSaveSuccess('Cart saved successfully');
-            toast.success('Cart saved successfully');
             console.log('Cart saved successfully:', response.data);
         }
         } catch (error) {
         setSaveError('Error saving cart',error);
-        toast(error);
         console.error('Error saving cart:', error);
         } finally {
         setIsSaving(false);  // Reset the loading state

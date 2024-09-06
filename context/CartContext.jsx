@@ -60,7 +60,19 @@ export const CartProvider = ({ children }) => {
     if (filteredCartItems.length > 0 && totalPrice >= 0 && userId) {
       saveCart(filteredCartItems, totalPrice, userId)
         .then(() => {
-          toast.success(`Cart saved successfully! Total price: ${totalPrice}`);
+          toast.success(`Added to Cart:`, {
+            position: toast.POSITION.BOTTOM_RIGHT,
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            toastId: "cartSaveSuccess",
+            bodyClassName: "toast-message",
+            progressClassName: "toast-progress",            
+          });
         })
         .catch((error) => {
           toast.error(`Error saving cart: ${error.message}`);
