@@ -12,10 +12,6 @@ const Cart = () => {
   const deliveryFee = 99;
   const price = (totalPrice + deliveryFee).toFixed(2);
 
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
-
   const subQuantity = (e, item) => {
     e.preventDefault();
     addToCart({ ...item, quantity: -1 });
@@ -25,8 +21,8 @@ const Cart = () => {
     e.preventDefault();
     addToCart({ ...item, quantity: +1 });
   };
-  const productsForCart = cartItems.map((item) => (
-    <CartItem
+    const productsForCart = cartItems.map((item) => (
+      <CartItem
       item={item}
       key={item.id}
       title={item.title}
@@ -35,8 +31,8 @@ const Cart = () => {
       subQuantity={subQuantity}
       addQuantity={addQuantity}
       quantity={item.quantity}
-    />
-  ));
+      />
+    ));
   const openCheckOut = () => {
     const checkoutData = `
           Total Price: ₹${price}`;
@@ -60,7 +56,7 @@ const Cart = () => {
       <div className="master-container">
         <div className="card-cart cart">
           <label className="title">
-            {cartItems.length > 0 ? "Your Cart" : "Empty Cart"}
+            {cartItems ? "Your Cart" : "Empty Cart"}
           </label>
           <div className="products">{productsForCart}</div>
         </div>

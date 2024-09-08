@@ -84,7 +84,7 @@
 			const responseData = response.data;
 			console.log(responseData);
 			// Handle successful login/signup
-			auth.login(responseData.userId, responseData.token,responseData.role);		
+			auth.login(responseData.userId, responseData.token,responseData.role);
 			navigate('/');
 }
 
