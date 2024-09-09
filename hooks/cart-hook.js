@@ -13,21 +13,27 @@
         setSaveSuccess(null); // Reset success state
         const payload = { userId, items: filteredCartItems, totalPrice };
 
+        const domainName = import.meta.env.VITE_API_URL;
+
         try {
         const response = await axios.post(
-            "http://localhost:8080/api/cart/save-cart",
+            `${domainName}/api/cart/save-cart`,
             payload
         );
 
         if (response.status === 200) {
             setSaveSuccess("Cart saved successfully");
-            toast.success("Cart saved successfully");
+            toast.success("Cart saved successfully",{
+                position: "bottom-right",
+            });
         }
         } catch (error) {
         const errorMessage =
             error.response?.data?.message || "Error saving cart, please try again";
         setSaveError(errorMessage);
-        toast.error(errorMessage);
+        toast.error(errorMessage,{
+            position: "bottom-right",
+        });
         } finally {
         setIsSaving(false); // Reset the loading state
         }

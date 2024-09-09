@@ -5,7 +5,6 @@ import { AuthContext } from "../context/auth-context";
 import "../components/Login.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 const ProductForm = () => {
   const { token } = useContext(AuthContext);
   const [product, setProduct] = useState({
@@ -34,26 +33,26 @@ const ProductForm = () => {
     } else {
       setProduct({ ...product, [e.target.name]: e.target.value });
     }
+    console.log("Current product state:", product); // Log the current state
   };
-  const localhost =
-    "https://jumpsquad-backend.vercel.app" || "http://localhost:8080";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", product.title);
-    formData.append("description", product.description);
-    formData.append("price", product.price);
-    formData.append("category", product.category);
+
+    const data = new FormData();
+    data.append("title", product.title);
+    data.append("description", product.description);
+    data.append("price", product.price);
+    data.append("category", product.category);
     if (product.image) {
-      formData.append("image", product.image); // Append the file to FormData
+      data.append("image", product.image); // Append the file to FormData
     }
-    console.log(formData);
 
     try {
+      const domainName = import.meta.env.VITE_API_URL;
       const response = await axios.post(
-        `${localhost}/api/products/admin/add`,
-        formData,
+        `${domainName}/api/products/admin/add`,
+        data,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -61,16 +60,10 @@ const ProductForm = () => {
           }
         }
       );
-
       const responseData = response.data;
       toast.success(`${responseData.message}`);
-    } catch (error) {
-      const errorMessage =
-        error.response?.data?.message || "Something went wrong!";
-      toast.error(errorMessage, {
-        position: "bottom-right",
-        autoClose: 2000,
-      });
+    } catch (err) {
+      toast.error(`${err.message}`);
     }
   };
 

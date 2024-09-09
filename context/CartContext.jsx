@@ -19,18 +19,18 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (item) => {
-    if (!item.id) {
+    if (!item.productId) {
       toast.error("Item is missing ID");
       console.error("Item is missing product ID:", item);
       return;
     }
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
+      const existingItem = prevItems.find((cartItem) => cartItem.productId === item.productId);
   
       if (existingItem) {
         // Merge and update the quantity
         return prevItems.map((cartItem) =>
-          cartItem.id === item.id
+          cartItem.productId === item.productId
             ? {
                 ...cartItem,
                 quantity: cartItem.quantity + item.quantity,
@@ -58,15 +58,32 @@ export const CartProvider = ({ children }) => {
       const fetchCartItems = async () => {
         if (isLoggedIn) {
           try {
+            const domainName = import.meta.env.VITE_API_URL;
+
             const payload = { userId };
-            const response = await axios.post('http://localhost:8080/api/cart/get-cart',payload
+            const response = await axios.post(`${domainName}/api/cart/get-cart`,payload
             ); // Replace with your API endpoint
             const fetchedItems = response.data.cart.items || []; // Assuming the response is an array of items
             console.log(fetchedItems);
-            setCartItems(fetchedItems); // Store fetched items in cartItems state
-            toast.success(`Cart fetched successfully`);
+            const fetchPost=fetchedItems.map((item) => {
+              return {
+                productId: item.productId,
+                title: item.title,
+                image: item.image,
+                price: item.price,
+                quantity: item.quantity
+              };
+            })
+            setCartItems(fetchPost); // Store fetched items in cartItems state
+            toast.success(`Cart fetched successfully`,{
+              position:"bottom-right"
+            }
+              
+            );
           } catch (error) {
-            toast.error(`Error fetching cart items: ${response.message}`);
+            toast.error(`Error fetching cart items: `,{
+              position:"bottom-right"
+            });
           }
           
         }
@@ -79,9 +96,9 @@ export const CartProvider = ({ children }) => {
     const totalPrice = calculateTotalPrice(cartItems);
     
     const filteredCartItems = cartItems.map((item) => ({
+      productId: item.productId,
       title: item.title,
       image: item.image,
-      productId: item.id,
       quantity: item.quantity,
       price: item.price
     }));

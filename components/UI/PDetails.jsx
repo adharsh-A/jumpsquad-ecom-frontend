@@ -27,7 +27,7 @@ const PDetails = () => {
   const navigate = useNavigate(); // Get the navigate function
 
   useEffect(() => {
-    const product = items.find((item) => item._id ===id);
+    const product = items.find((item) => item.productId ===id);
     if (product) {
       setCurrentProduct(product);
       setLoading(false);

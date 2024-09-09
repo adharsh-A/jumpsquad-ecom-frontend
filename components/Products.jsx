@@ -8,39 +8,44 @@ import About from "../components/About";
 import { CartContext } from "../context/CartContext";
 
 const Products = (props) => {
-  const { addItems, items } = useContext(CartContext);
+  const { addItems, items } = useContext(CartContext); // Accessing CartContext
   const [loading, setLoading] = useState(false);
 
-	const localhost = 'https://jumpsquad-backend.vercel.app' || 'http://localhost:8080';
+  const domainName = import.meta.env.VITE_API_URL; // Getting API URL from environment
+
   useEffect(() => {
     if (items.length === 0) {
-    setLoading(true);
-    axios
-      .get(`${localhost}/api/products/all`)
-      .then((response) => {
-        addItems(response.data.products); // Assuming `response.data` contains the products
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.error("Error fetching data:", error);
-        toast.error(`Network response was not ok`, {
-          position: "bottom-right",
-          autoClose: 2000,
+      setLoading(true); // Start loading before fetching data
+      axios
+        .get(`${domainName}/api/products/all`)
+        .then((response) => {
+          if (response.data && response.data.products) {
+            addItems(response.data.products); // Assuming `response.data.products` exists
+          } else {
+            toast.error("Unexpected response structure from server.");
+          }
+          setLoading(false); // Stop loading after fetching data
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.error("Error fetching data:", error);
+          toast.error(`Error: ${error.message || "Network response was not ok"}`, {
+            position: "bottom-right",
+            autoClose: 2000,
+          });
         });
-      });
     }
-  }, [items]);
+  }, []);
 
   return (
     <>
       {loading ? (
-        <Loading />
+        <Loading /> // Show loading while fetching data
       ) : (
         <>
           <Hero />
-          <ProductList />
-          <About/>
+          <ProductList /> {/* Make sure ProductList properly renders the items */}
+          <About />
         </>
       )}
     </>
