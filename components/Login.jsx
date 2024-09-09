@@ -85,7 +85,7 @@ const Login = (props) => {
       auth.login(responseData.userId, responseData.token, responseData.role);
       navigate("/");
     } catch (err) {
-      toast.error(error.message, {
+      toast.error(err, {
         position: "bottom-right",
         autoClose: 2000,
       });
