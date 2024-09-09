@@ -11,8 +11,12 @@ const Products = (props) => {
   const { addItems, items } = useContext(CartContext); // Accessing CartContext
   const [loading, setLoading] = useState(false);
 
-  const domainName = import.meta.env.VITE_API_URL; // Getting API URL from environment
-
+  let domainName;
+  if(process.env.NODE_ENV === "production"){
+     domainName = `https://jumpsquad-backend.vercel.app`;
+    }else{
+    domainName = import.meta.env.VITE_API_URL;
+    }
   useEffect(() => {
     if (items.length === 0) {
       setLoading(true); // Start loading before fetching data

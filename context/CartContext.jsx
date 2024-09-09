@@ -58,8 +58,12 @@ export const CartProvider = ({ children }) => {
       const fetchCartItems = async () => {
         if (isLoggedIn) {
           try {
-            const domainName = import.meta.env.VITE_API_URL;
-
+            let domainName;
+            if(process.env.NODE_ENV === "production"){
+               domainName = `https://jumpsquad-backend.vercel.app`;
+              }else{
+              domainName = import.meta.env.VITE_API_URL;
+              }
             const payload = { userId };
             const response = await axios.post(`${domainName}/api/cart/get-cart`,payload
             ); // Replace with your API endpoint

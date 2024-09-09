@@ -49,8 +49,12 @@ const ProductForm = () => {
     }
 
     try {
-      const domainName = import.meta.env.VITE_API_URL;
-      const response = await axios.post(
+      let domainName;
+      if(process.env.NODE_ENV === "production"){
+         domainName = `https://jumpsquad-backend.vercel.app`;
+        }else{
+        domainName = import.meta.env.VITE_API_URL;
+        }      const response = await axios.post(
         `${domainName}/api/products/admin/add`,
         data,
         {

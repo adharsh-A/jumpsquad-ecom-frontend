@@ -54,8 +54,12 @@ const Login = (props) => {
       setErrors(newErrors);
       return; // Stop form submission if there are errors
     }
-
-    const domainName = import.meta.env.VITE_API_URL;
+let domainName;
+if(process.env.NODE_ENV === "production"){
+	 domainName = `https://jumpsquad-backend.vercel.app`;
+	}else{
+	domainName = import.meta.env.VITE_API_URL;
+	}
 
     try {
       const formData = new FormData();
