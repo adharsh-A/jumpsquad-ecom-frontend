@@ -33,7 +33,7 @@ export const CartProvider = ({ children }) => {
           cartItem.id === item.id
             ? {
                 ...cartItem,
-                quantity: cartItem.quantity + item.quantity,
+                quantity: Math.max(cartItem.quantity + item.quantity,1)
               }
             : cartItem
         );
