@@ -16,7 +16,7 @@ import { AuthContext } from "../../context/auth-context";
               setFetchedItems(items);
               console.log(typeof(fetchedItems));
             }
-          }, [props.items]);
+          }, [items]);
 
           const showMoreItems = () => {
             setVisibleItemsCount((prevCount) => prevCount + 4);
@@ -33,7 +33,7 @@ import { AuthContext } from "../../context/auth-context";
               }
             }
           const products = fetchedItems.slice(0, visibleItemsCount).map((item) => (
-            <ProductCard key={item.productId} item={item} addcart={(e)=>cartHandler(e,item)} />
+            <ProductCard key={item.id} item={item} addcart={(e)=>cartHandler(e,item)} />
           ));
      
         

@@ -19,18 +19,18 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (item) => {
-    if (!item.productId) {
+    if (!item.id) {
       toast.error("Item is missing ID");
       console.error("Item is missing product ID:", item);
       return;
     }
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((cartItem) => cartItem.productId === item.productId);
+      const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
   
       if (existingItem) {
         // Merge and update the quantity
         return prevItems.map((cartItem) =>
-          cartItem.productId === item.productId
+          cartItem.id === item.id
             ? {
                 ...cartItem,
                 quantity: cartItem.quantity + item.quantity,
@@ -67,18 +67,10 @@ export const CartProvider = ({ children }) => {
             const payload = { userId };
             const response = await axios.post(`${domainName}/api/cart/get-cart`,payload
             ); // Replace with your API endpoint
-            const fetchedItems = response.data.cart.items || []; // Assuming the response is an array of items
+            const fetchedItems = response.data.items || []; // Assuming the response is an array of items
             console.log(fetchedItems);
-            const fetchPost=fetchedItems.map((item) => {
-              return {
-                productId: item.productId,
-                title: item.title,
-                image: item.image,
-                price: item.price,
-                quantity: item.quantity
-              };
-            })
-            setCartItems(fetchPost); // Store fetched items in cartItems state
+            
+            setCartItems(fetchedItems); // Store fetched items in cartItems state
             toast.success(`Cart fetched successfully`,{
               position:"bottom-right"
             }
@@ -93,14 +85,14 @@ export const CartProvider = ({ children }) => {
         }
       }
       fetchCartItems(); // Call the fetch function
-    }, [isLoggedIn, userId]);  
+    }, [userId]);  
 
   // Use useEffect to save the cart whenever cartItems change
   useEffect(() => {
     const totalPrice = calculateTotalPrice(cartItems);
     
     const filteredCartItems = cartItems.map((item) => ({
-      productId: item.productId,
+      productId: item.id,
       title: item.title,
       image: item.image,
       quantity: item.quantity,
