@@ -47,6 +47,7 @@ const Input = () => {
           onKeyDown={handleKeyDown}
           id="inputBox"
           type="text"
+          autoComplete="off"  // This disables autocomplete
           placeholder="Search For Products"
         />
       </div>
@@ -126,6 +127,15 @@ const StyledWrapper = styled.div`
     box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.1);
     z-index: 10;
   }
+    ::-webkit-scrollbar{
+  width: .4rem;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb{
+  background-color: grey;
+  padding: 2px;
+  border-radius: 5px;
+}
 
   .dropdown-item {
     display: flex;

@@ -1,0 +1,42 @@
+select {
+  padding: 10px 15px;
+  color: whitesmoke;
+  backdrop-filter: blur(10px);
+  background-color: transparent;
+  border: none;
+  border: 1.5px solid rgba(245, 245, 245, 0.447);
+  border-radius: 10px;
+  cursor: pointer;
+  width: 150px;
+}
+
+/* Hover effect for the select dropdown */
+select:hover {
+    cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.556);
+  border-color: rgba(255, 255, 255, 0.738);
+  box-shadow: 0px 0px 10px 5px #908d8d;
+
+}
+select:active {
+  background-color: rgba(0, 0, 0, 0.556);
+  border-color: rgba(255, 255, 255, 0.495);
+}
+/* Customize the option values */
+option {
+margin-top: 20px;
+  background-color: #2a2a2a;
+  color: whitesmoke;
+}
+
+/* Hover effect for option elements */
+option:hover {
+  background-color: #32323284;
+}
+.search-results > h1 {
+  background-image: linear-gradient(to right, #e2e1ec, #a49cff, #71c9ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+}
