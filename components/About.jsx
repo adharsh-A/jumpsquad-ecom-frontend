@@ -57,6 +57,7 @@ const StyledWrapper = styled.div`
   width: 270px;
   margin: auto;
 margin-top: 200px;
+margin-bottom: 200px;
 }
 
 .card svg {

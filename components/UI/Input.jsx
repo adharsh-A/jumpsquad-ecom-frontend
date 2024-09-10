@@ -4,20 +4,31 @@ import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
 const Input = () => {
-    const [searchQuery, setSearchQuery] = useState('');
-    const {items}=useContext(CartContext);
-    const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+  const { items } = useContext(CartContext);
+  const navigate = useNavigate();
 
-  
-    const filteredData = items.filter(item =>
-        item.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+  const filteredData = items.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-          navigate('/results', { state: { filteredData } });
-        }
-      };
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      navigate("/results", { state: { filteredData } });
+      setSearchQuery("");
+    }
+  };
+
+  const handleSelectItem = (item) => {
+    // Navigate to the product detail page or take an action when a result is clicked
+    navigate(`/${item.id}/details`);
+    // Reset the search query
+    setSearchQuery("");
+  };
+
   return (
     <StyledWrapper>
       <div className="inputBox_container">
@@ -32,50 +43,109 @@ const Input = () => {
         <input
           className="inputBox"
           value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
+          onChange={(e) => setSearchQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           id="inputBox"
           type="text"
           placeholder="Search For Products"
         />
       </div>
-    </StyledWrapper>
+
+      {searchQuery && filteredData.length > 0 && (
+        <div className="dropdown">
+          {filteredData.map((item) => (
+            <div
+              key={item.id}
+              className="dropdown-item"
+              onClick={() => handleSelectItem(item)}
+            >
+              <div className="flex">
+                <img src={item.image} width={30} alt="" />
+                <span><em>{item.title}</em></span>
+              </div>
+              <span>₹{item.price}</span>
+            </div>
+          ))}
+        </div>
+      )}
+      </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
-  .inputBox_container {
+.flex{
   display: flex;
   align-items: center;
-  flex-direction: row;
-  max-width: 14em;
-  width: fit-content;
-  height: fit-content;
-  background-color: #5c6370;
-  opacity: 0.8;
-  border-radius: 0.8em;
-  overflow: hidden;
+  font-weight: 600;
 }
+  .flex span{
+    margin-left: 0.5rem;
+  }
+  .inputBox_container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    max-width: 14em;
+    width: fit-content;
+    height: fit-content;
+    background-color: #5c6370;
+    opacity: 0.8;
+    border-radius: 0.8em;
+    overflow: hidden;
+  }
 
-.search_icon {
-  height: 1em;
-  padding: 0 0.5em 0 0.8em;
-  fill: #abb2bf;
-}
+  .search_icon {
+    height: 1em;
+    padding: 0 0.5em 0 0.8em;
+    fill: #abb2bf;
+  }
 
-.inputBox {
-  background-color: transparent;
-  color: #ffffff;
-  outline: none;
-  width: 100%;
-  border: 0;
-  padding: 0.5em 1.5em 0.5em 0;
-  font-size: 1em;
-}
+  .inputBox {
+    background-color: transparent;
+    color: #ffffff;
+    outline: none;
+    width: 100%;
+    border: 0;
+    padding: 0.5em 1.5em 0.5em 0;
+    font-size: 1em;
+  }
 
-::placeholder {
-  color: #abb2bf;
-}
+  ::placeholder {
+    color: #abb2bf;
+  }
+
+  .dropdown {
+    margin-top: 1rem;
+    position: absolute;
+    background-color: #ffffff82;
+    border: 1px solid #ddd;
+    border-radius: 0.4em;
+    width: 20em;
+    max-height: 10em;
+    overflow-y: auto;
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.5em;
+    font-size: 0.8em;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+  }
+
+
+  .dropdown-item:hover {
+    background-color: #ffffff16;
+  }
+
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
 `;
 
 export default Input;
