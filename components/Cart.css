@@ -6,6 +6,9 @@
   --secondary: #6560c3;
   --accent: #4d4c6b;
 }
+.product{
+  align-items: center;
+}
 .master-container {
   margin-top: 5%;
   margin-left: 33%;
@@ -187,6 +190,7 @@
   
   .price {
     position: relative;
+    display: flex;
     font-size: 22px;
     color: #2B2B2F;
     font-weight: 900;
@@ -203,6 +207,16 @@
     color: #5F5D6B;
     bottom: 5px;
     display: inline-block;
+  }
+  .delete {
+    margin-top: 4px;
+    cursor: pointer;
+    width: 20px;
+    margin-left: 10px;
+    color: red;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
   }
   
   .checkout .checkout-btn {

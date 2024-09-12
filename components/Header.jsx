@@ -43,6 +43,11 @@ const Header = (props) => {
           <NavLink to="/cart" className="nav-link" activeClassName="active">Cart</NavLink>
         </li>
           }
+        {isLoggedIn &&
+        <li className="fields">
+          <NavLink to="/wishlist" className="nav-link" activeClassName="active">Wishlist</NavLink>
+        </li>
+          }
         <li className="fields">
           <NavLink to="/about" className="nav-link" activeClassName="active">About</NavLink>
         </li>

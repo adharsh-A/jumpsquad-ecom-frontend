@@ -7,7 +7,7 @@ import Modal from "./UI/Modal";
 const Cart = () => {
   const [checkoutData, setCheckoutData] = useState("");
   const [open, setOpen] = useState(false);
-  const { cartItems, addToCart, calculateTotalPrice } = useContext(CartContext);
+  const { cartItems, addToCart, calculateTotalPrice, removeItems } = useContext(CartContext);
   const totalPrice = calculateTotalPrice(cartItems);
   const deliveryFee = 99;
   const price = (totalPrice + deliveryFee).toFixed(2);
@@ -21,18 +21,25 @@ const Cart = () => {
     e.preventDefault();
     addToCart({ ...item, quantity: +1 });
   };
+  const removeItemsFromCart = (e,id) => {
+    e.preventDefault();
+    removeItems(id); 
+  }
     const productsForCart = cartItems.map((item) => (
       <CartItem
       item={item}
       key={item.id}
+      id={item.id}
       title={item.title}
       image={item.image}
       price={item.price}
       subQuantity={subQuantity}
       addQuantity={addQuantity}
+      removeItems={removeItemsFromCart}
       quantity={item.quantity}
       />
     ));
+
   const openCheckOut = () => {
     const checkoutData = `
           Total Price: ₹${price}`;

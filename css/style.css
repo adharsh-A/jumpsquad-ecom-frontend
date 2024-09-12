@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
+html{
+  cursor: url("../public/images/cursor2.png") 16 16, auto;
+  
+}
 body {
+
   margin: 0;
   font-family: "Montserrat", sans-serif;
   background: #000000;
@@ -210,6 +215,7 @@ body {
 
 #container3D canvas {
   background-color: #0a092f00;
+  filter: drop-shadow(0 0 0.2rem var(--text));
   margin-top: 100px;
   width: 70vw !important;
   height: 70vh !important;

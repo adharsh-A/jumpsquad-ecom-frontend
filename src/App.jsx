@@ -15,7 +15,9 @@ const About = lazy(() => import("../components/About.jsx"));
 const Login = lazy(() => import("../components/Login.jsx"));
 const ProductList = lazy(() => import("../admin/ProductList.jsx"));
 const ResultsComponent = lazy(() => import("../components/ResultComponent.jsx"));
-import Loading from "../components/UI/Loading";
+const ProductForm = lazy(() => import("../admin/ProductForm.jsx"));
+const Wishlist = lazy(() => import("../components/Wishlist.jsx"));
+import Loading from "../components/Wishlist.jsx";
 import { useAuth } from "../hooks/auth-hook.js";
 import { AuthContext } from "../context/auth-context.js";
 
@@ -59,8 +61,10 @@ const App = () => {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/admin" element={<ProductList />} />
                 <Route path="/results" element={<ResultsComponent />} />
+                <Route path="/admin" element={<ProductList />} />
+                <Route path="/wishlist" element={<Wishlist />} />
+                
 
               </Routes>
             </Suspense>
