@@ -27,9 +27,7 @@
 
         if (response.status === 200) {
             setSaveSuccess("Cart saved successfully");
-            toast.success("Cart saved successfully",{
-                position: "bottom-right",
-            });
+
         }
         } catch (error) {
         const errorMessage =

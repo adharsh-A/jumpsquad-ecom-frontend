@@ -4,7 +4,6 @@
 }
 
 .card {
-  backdrop-filter: blur(1px);
   width: 220px;
   height: fit-content;
   padding: .8em;

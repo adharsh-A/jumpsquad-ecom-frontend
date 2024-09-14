@@ -55,7 +55,16 @@
 .input-group input:focus {
   border-color: rgba(167, 139, 250);
 }
-
+.input-icon{
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+outline: 0;
+border: 0;
+background-color: transparent;
+}
 
 
 .forgot {

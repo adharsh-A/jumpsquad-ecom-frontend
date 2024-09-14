@@ -40,7 +40,7 @@ const ProductList = (props) => {
         autoClose: 2000,
       });
     } else {
-      addToWishlist({...item});
+      addToWishlist(item);
     }
   };
   const products = fetchedItems

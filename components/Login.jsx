@@ -111,6 +111,7 @@ if(process.env.NODE_ENV === "production"){
   };
 
   const togglePasswordVisibility = () => {
+    e.preventDefault();
     setShowPassword(!showPassword);
   };
 
@@ -174,6 +175,7 @@ if(process.env.NODE_ENV === "production"){
                 type="text"
                 name="username"
                 id="username"
+                autoComplete="off"
                 onChange={handleInputChange}
                 value={formState.username}
                 className={errors.username ? "error" : ""}
@@ -212,25 +214,26 @@ if(process.env.NODE_ENV === "production"){
                 value={formState.password}
                 className={errors.password ? "error" : ""}
               />
-              <span
+              <button
                 className="input-icon"
-                style={{
-                  position: "absolute",
-                  right: "10px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                }}
+                // style={{
+                //   color: "white",
+                //   position: "absolute",
+                //   right: "10px",
+                //   top: "50%",
+                //   transform: "translateY(-50%)",
+                // }}
                 onClick={togglePasswordVisibility}
               >
                 <i
                   className={
                     showPassword
-                      ? "fa fa-eye-slash icon-white"
+                      ? "fa fa-eye-slash icon-white "
                       : "fa fa-eye icon-white"
                   }
                   style={{ cursor: "pointer", color: "white !important" }}
                 ></i>
-              </span>
+              </button>
             </div>
 
             {!isLogin && (

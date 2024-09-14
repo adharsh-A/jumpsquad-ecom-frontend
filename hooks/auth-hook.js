@@ -1,16 +1,17 @@
 import { useState, useCallback, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 let logoutTimer;
 
 export const useAuth = () => {
   const [token, setToken] = useState(false);
-  const [role, setRole] = useState("user")
+  const [role, setRole] = useState("")
   const [tokenExpirationDate, setTokenExpirationDate] = useState();
-  const [userId, setUserId] = useState(false);
+  const [userId, setUserId] = useState(null);
 
   const login = useCallback((uid, token, role,expirationDate) => {
     setToken(token);
-    setUserId(uid);
+    setUserId(`${uid}`);
     setRole(role);
     const tokenExpirationDate =
       expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
@@ -44,15 +45,18 @@ export const useAuth = () => {
   }, [token, logout, tokenExpirationDate]);
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('userData'));
-    if (
-      storedData &&
-      storedData.token &&
-      new Date(storedData.expiration) > new Date()
-    ) {
-      login(storedData.userId, storedData.token,storedData.role, new Date(storedData.expiration));
+    try {
+      const storedData = JSON.parse(localStorage.getItem('userData'));
+      if (
+        storedData &&
+        storedData.token &&
+        new Date(storedData.expiration) > new Date()
+      ) {
+        login(storedData.userId, storedData.token, storedData.role, new Date(storedData.expiration));
+      }
+    } catch (error) {
+      console.error("Failed to parse user data from localStorage", error);
     }
   }, [login]);
-
   return { token,role, login, logout, userId };
 };

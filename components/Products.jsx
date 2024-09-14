@@ -6,17 +6,60 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import About from "../components/About";
 import { CartContext } from "../context/CartContext";
+import { AuthContext } from "../context/auth-context";
 
-const Products = (props) => {
-  const { addItems, items } = useContext(CartContext); // Accessing CartContext
+const Products = () => {
+  const { addItems, items, setWishlistItems } = useContext(CartContext); // Accessing CartContext
   const [loading, setLoading] = useState(false);
+  const { userId } = useContext(AuthContext);
+  // toast.warn(`${userId}`);
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      let domainName;
+
+      if (process.env.NODE_ENV === "production") {
+        domainName = `https://jumpsquad-backend.vercel.app`;
+      } else {
+        domainName = import.meta.env.VITE_API_URL;
+      }
+
+      if (userId) {
+
+        try {
+          const response = await axios.post(
+            `${domainName}/api/wishlist/get-wishlist`,
+            {
+              id: userId,
+            }
+          );
+
+          
+          const itemsData = response.data.items;
+          const fetchedItems = itemsData.map((item) => ({
+            id: item.productId,
+            title: item.title,
+            image: item.image,
+            price: item.price,
+          }));
+          setWishlistItems(fetchedItems);
+          // toast("got hit");
+
+          // Display the number of fetched items
+        } catch (error) {
+        }
+      }
+    };
+
+    // Call the async function inside useEffect
+    fetchWishlist();
+  }, []);
 
   let domainName;
-  if(process.env.NODE_ENV === "production"){
-     domainName = `https://jumpsquad-backend.vercel.app`;
-    }else{
+  if (process.env.NODE_ENV === "production") {
+    domainName = `https://jumpsquad-backend.vercel.app`;
+  } else {
     domainName = import.meta.env.VITE_API_URL;
-    }
+  }
   useEffect(() => {
     if (items.length === 0) {
       setLoading(true); // Start loading before fetching data
@@ -33,10 +76,13 @@ const Products = (props) => {
         .catch((error) => {
           setLoading(false);
           console.error("Error fetching data:", error);
-          toast.error(`Error: ${error.message || "Network response was not ok"}`, {
-            position: "bottom-right",
-            autoClose: 2000,
-          });
+          toast.error(
+            `Error: ${error.message || "Network response was not ok"}`,
+            {
+              position: "bottom-right",
+              autoClose: 2000,
+            }
+          );
         });
     }
   }, []);
@@ -48,7 +94,7 @@ const Products = (props) => {
       ) : (
         <>
           <Hero />
-          <ProductList /> {/* Make sure ProductList properly renders the items */}
+          <ProductList />
           <About />
         </>
       )}

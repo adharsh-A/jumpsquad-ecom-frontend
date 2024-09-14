@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useContext, Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect, Suspense, lazy } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Header from "../components/Header.jsx";
 /* import Animation from "../components/Animation.jsx"; */
 import "./App.css";
 import { CartProvider } from "../context/CartContext";
 
-const Products = lazy(() => import("../components/Products"));
-const Cart = lazy(() => import("../components/Cart"));
+const Products = lazy(() => import("../components/Products.jsx"));
+const Cart = lazy(() => import("../components/Cart.jsx"));
 const CheckOut = lazy(() => import("../components/CheckOut.jsx"));
 const Details = lazy(() => import("../components/UI/PDetails.jsx"));
 const Profile = lazy(() => import("../components/Profile.jsx"));
@@ -50,7 +50,7 @@ const App = () => {
         {loading ? (
           <Loading />
         ) : (
-          <BrowserRouter>
+          <Router>
             <Header />
             <Suspense fallback={<Loading />}>
               <Routes>
@@ -62,13 +62,13 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/results" element={<ResultsComponent />} />
-                <Route path="/admin" element={<ProductList />} />
-                <Route path="/wishlist" element={<Wishlist />} />
+                {role === "admin" && <Route path="/admin" element={<ProductList />} />}
+                {token && <Route path="/wishlist" element={<Wishlist />} />}
                 
 
               </Routes>
             </Suspense>
-          </BrowserRouter>
+          </Router>
         )}
         <ToastContainer />
       </CartProvider>
