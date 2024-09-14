@@ -77,7 +77,7 @@ body {
   border-radius: 50px;
   background-color: var(--text);
   padding: 0.4rem 0.9rem;
-  color: inherit; /* Inherit color from the parent */
+  color: rgba(0, 0, 0, 0.758); /* Inherit color from the parent */
   text-decoration: none; /* Remove underline */
 }
 
@@ -91,7 +91,7 @@ body {
   border-radius: 50px;
   background-color: var(--text);
   padding: 0.4rem 0.9rem;
-  color: inherit; /* Inherit color from the parent */
+  color: rgba(0, 0, 0, 0.758); /* Inherit color from the parent */
   text-decoration: none; /* Remove underline */
 }
 .profile-link {

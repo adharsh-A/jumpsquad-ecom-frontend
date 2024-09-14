@@ -5,12 +5,13 @@ import Header from "../components/Header.jsx";
 /* import Animation from "../components/Animation.jsx"; */
 import "./App.css";
 import { CartProvider } from "../context/CartContext";
+//mui
 
 const Products = lazy(() => import("../components/Products.jsx"));
 const Cart = lazy(() => import("../components/Cart.jsx"));
 const CheckOut = lazy(() => import("../components/CheckOut.jsx"));
 const Details = lazy(() => import("../components/UI/PDetails.jsx"));
-const Profile = lazy(() => import("../components/Profile.jsx"));
+const EditProfile = lazy(() => import("../components/Profile.jsx"));
 const About = lazy(() => import("../components/About.jsx"));
 const Login = lazy(() => import("../components/Login.jsx"));
 const ProductList = lazy(() => import("../admin/ProductList.jsx"));
@@ -58,7 +59,7 @@ const App = () => {
                 {token && <Route path="/cart" exact element={<Cart />} />}
                 <Route path="/checkout" element={<CheckOut />} />
                 <Route path="/:id/details" element={<Details />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile" element={<EditProfile />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/results" element={<ResultsComponent />} />

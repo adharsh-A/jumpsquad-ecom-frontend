@@ -89,14 +89,14 @@ const StyledWrapper = styled.div`
     max-width: 14em;
     width: fit-content;
     height: fit-content;
-    background-color: #5c6370;
+    background-color: grey;
     opacity: 0.8;
     border-radius: 0.8em;
     overflow: hidden;
   }
 
   .search_icon {
-    height: 1em;
+  width: 30px;
     padding: 0 0.5em 0 0.8em;
     fill: #abb2bf;
   }
