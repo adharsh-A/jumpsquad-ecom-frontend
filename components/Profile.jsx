@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Button,
   TextField,
@@ -12,6 +12,9 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext } from "../context/auth-context";
+import axios from "axios";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,12 +23,13 @@ const darkTheme = createTheme({
 });
 
 export default function EditProfile() {
+  const { token,userId } = useContext(AuthContext);
   const navigate = useNavigate();
   // State to hold form data
   const [formData, setFormData] = useState({
     username: "",
     address: "",
-    profilePhoto: null,
+    image: null,
   });
 
   const [photoPreview, setPhotoPreview] = useState(null); // State to hold image preview
@@ -41,15 +45,16 @@ export default function EditProfile() {
   // Handle profile photo change
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
+    console.log(`${file}`);
     if (file) {
       setFormData({
         ...formData,
-        profilePhoto: file,
+        image: file,
       });
       setPhotoPreview(URL.createObjectURL(file)); // Display image preview
     }
   };
-  
+
   const cancelHandler = (e) => {
     e.preventDefault();
     navigate(-1);
@@ -57,8 +62,33 @@ export default function EditProfile() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send to backend)
-    console.log("Form Data:", formData);
+    const data = new FormData();
+    data.append("username", formData.username);
+    data.append("address", formData.address);
+    data.append("image", formData.image);
+    data.append("userId", userId);
+    try {
+      toast(`${token}`)
+      let domainName;
+      if (process.env.NODE_ENV === "production") {
+        domainName = `https://jumpsquad-backend.vercel.app`;
+      } else {
+        domainName = import.meta.env.VITE_API_URL;
+      }
+
+      const response = axios.put(`${domainName}/api/users/user/update`, data,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        }
+      })
+      toast.success(response.data,{
+        position: "bottom-right",
+      });
+
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   return (
