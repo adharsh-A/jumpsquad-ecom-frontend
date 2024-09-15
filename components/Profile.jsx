@@ -86,7 +86,7 @@ toast.info("Updating Profile...");
       toast.success(response.data.message,{
         position: "bottom-right",
       });
-
+      navigate("/");
     } catch (err) {
       toast.error(err);
     }
