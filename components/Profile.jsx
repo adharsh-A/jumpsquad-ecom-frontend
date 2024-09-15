@@ -60,7 +60,7 @@ export default function EditProfile() {
     navigate(-1);
   };
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
     const data = new FormData();
     data.append("username", formData.username);
@@ -75,7 +75,7 @@ export default function EditProfile() {
         domainName = import.meta.env.VITE_API_URL;
       }
 toast.info("Updating Profile...");
-      const response = axios.put(`${domainName}/api/users/user/update`, data,{
+      const response =await axios.put(`${domainName}/api/users/user/update`, data,{
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -180,7 +180,7 @@ toast.info("Updating Profile...");
                 border: "1px solid white",
               }}
               onClick={cancelHandler}
-              type="submit"
+              type="button"
               variant="contained"
               color="primary"
             >
