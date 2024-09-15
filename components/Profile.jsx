@@ -68,7 +68,6 @@ export default function EditProfile() {
     data.append("image", formData.image);
     data.append("userId", userId);
     try {
-      toast(`${token}`)
       let domainName;
       if (process.env.NODE_ENV === "production") {
         domainName = `https://jumpsquad-backend.vercel.app`;
@@ -82,7 +81,7 @@ export default function EditProfile() {
           "Content-Type": "multipart/form-data",
         }
       })
-      toast.success(response.data,{
+      toast.success(response.data.message||updated successfully,{
         position: "bottom-right",
       });
 
