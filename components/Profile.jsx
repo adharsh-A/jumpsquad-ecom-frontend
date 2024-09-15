@@ -81,7 +81,6 @@ toast.info("Updating Profile...");
           "Content-Type": "multipart/form-data",
         }
       })
-      toast.info("Profile Updated");
 
       toast.success(response.data.message,{
         position: "bottom-right",
