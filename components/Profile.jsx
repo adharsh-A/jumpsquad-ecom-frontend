@@ -81,7 +81,7 @@ export default function EditProfile() {
           "Content-Type": "multipart/form-data",
         }
       })
-      toast.success(response.data.message||updated successfully,{
+      toast.success(response.data.message||"updated successfully",{
         position: "bottom-right",
       });
 
