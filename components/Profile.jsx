@@ -74,7 +74,9 @@ export default function EditProfile() {
       } else {
         domainName = import.meta.env.VITE_API_URL;
       }
-toast.info("Updating Profile...");
+toast.info("Updating Profile...",{
+  autoClose:600,
+});
       const response =await axios.put(`${domainName}/api/users/user/update`, data,{
         headers: {
           Authorization: `Bearer ${token}`,
