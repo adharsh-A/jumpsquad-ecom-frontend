@@ -74,14 +74,16 @@ export default function EditProfile() {
       } else {
         domainName = import.meta.env.VITE_API_URL;
       }
-
+toast.info("Updating Profile...");
       const response = axios.put(`${domainName}/api/users/user/update`, data,{
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
         }
       })
-      toast.success(response.data.message||"updated successfully",{
+      toast.info("Profile Updated");
+
+      toast.success(response.data.message,{
         position: "bottom-right",
       });
 
