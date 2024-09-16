@@ -5,7 +5,7 @@ html{
     scroll-snap-type: y mandatory;
     ::selection{
         background-color: #b262eb7c;
-        color: #efeeee;}
+        color: #000000;}
 }
 body {
     margin: 0;

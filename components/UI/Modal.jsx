@@ -29,7 +29,7 @@ const Modal = ({ isOpen, onClose,onSubmit,display,description,buttonname}) => {
 
     </>,
     document.getElementById('modal-hook')
-  );
+    );
 };
 
 export default Modal;

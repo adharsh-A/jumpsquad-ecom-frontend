@@ -5,7 +5,6 @@ import Header from "../components/Header.jsx";
 /* import Animation from "../components/Animation.jsx"; */
 import "./App.css";
 import { CartProvider } from "../context/CartContext";
-//mui
 
 const Products = lazy(() => import("../components/Products.jsx"));
 const Cart = lazy(() => import("../components/Cart.jsx"));
@@ -18,7 +17,7 @@ const ProductList = lazy(() => import("../admin/ProductList.jsx"));
 const ResultsComponent = lazy(() => import("../components/ResultComponent.jsx"));
 const ProductForm = lazy(() => import("../admin/ProductForm.jsx"));
 const Wishlist = lazy(() => import("../components/Wishlist.jsx"));
-import Loading from "../components/Wishlist.jsx";
+import Loading from "../components/UI/Loading.jsx";
 import { useAuth } from "../hooks/auth-hook.js";
 import { AuthContext } from "../context/auth-context.js";
 
@@ -58,13 +57,13 @@ const App = () => {
                 <Route path="/" exact element={<Products />} />
                 {token && <Route path="/cart" exact element={<Cart />} />}
                 <Route path="/checkout" element={<CheckOut />} />
+                <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/:id/details" element={<Details />} />
                 <Route path="/profile" element={<EditProfile />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/results" element={<ResultsComponent />} />
                 {role === "admin" && <Route path="/admin" element={<ProductList />} />}
-                {token && <Route path="/wishlist" element={<Wishlist />} />}
                 
 
               </Routes>

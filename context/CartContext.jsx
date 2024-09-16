@@ -170,6 +170,7 @@ export const CartProvider = ({ children }) => {
         cartItems,
         addToCart,
         addItems,
+        setCartItems,
         items,
         calculateTotalPrice,
         removeItems,

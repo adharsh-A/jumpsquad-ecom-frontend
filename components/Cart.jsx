@@ -3,14 +3,28 @@ import { CartContext } from "../context/CartContext";
 import "./Cart.css";
 import CartItem from "./UI/CartItem";
 import Modal from "./UI/Modal";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import axios from "axios";
+import PayPalModal from "./UI/PaypalModal";
+import { toast } from "react-toastify";
+import { user } from "fontawesome";
+import { AuthContext } from "../context/auth-context";
+import mongoose from "mongoose";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const [checkoutData, setCheckoutData] = useState("");
+  const navigate=useNavigate()
+  const { userId } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
-  const { cartItems, addToCart, calculateTotalPrice, removeItems } = useContext(CartContext);
+  const {
+    cartItems,
+    addToCart,
+    calculateTotalPrice,
+    removeItems,
+    setCartItems,
+  } = useContext(CartContext);
   const totalPrice = calculateTotalPrice(cartItems);
   const deliveryFee = 99;
-  const price = (totalPrice + deliveryFee).toFixed(2);
 
   const subQuantity = (e, item) => {
     e.preventDefault();
@@ -21,12 +35,14 @@ const Cart = () => {
     e.preventDefault();
     addToCart({ ...item, quantity: +1 });
   };
-  const removeItemsFromCart = (e,id) => {
+
+  const removeItemsFromCart = (e, id) => {
     e.preventDefault();
-    removeItems(id); 
-  }
-    const productsForCart = cartItems.map((item) => (
-      <CartItem
+    removeItems(id);
+  };
+
+  const productsForCart = cartItems.map((item) => (
+    <CartItem
       item={item}
       key={item.id}
       id={item.id}
@@ -37,29 +53,96 @@ const Cart = () => {
       addQuantity={addQuantity}
       removeItems={removeItemsFromCart}
       quantity={item.quantity}
-      />
-    ));
+    />
+  ));
 
   const openCheckOut = () => {
-    const checkoutData = `
-          Total Price: ₹${price}`;
-
-    setCheckoutData(checkoutData);
+    // const checkoutData = `Total Price: ₹${price}`;
+    // setCheckoutData(checkoutData);
     setOpen(true);
   };
-  const closeCheckOut = () => {
+  const closeModal = () => {
     setOpen(false);
   };
+  const handleApprove = async (orderID) => {
+    closeModal();
+
+    try {
+      let checkoutData = [];
+      checkoutData = cartItems.map((item) => ({
+        productId: item.id,
+        quantity: item.quantity,
+        image: item.image,
+        title: item.title,
+        price: item.price,
+      }));
+
+      const orderData = {
+        userId,
+        items: checkoutData,
+        totalAmount: totalPrice,
+        orderID,
+      };
+      // orderData.items = orderData.items.map((item) => ({
+      //   ...item,
+      //   productId: mongoose.Types.ObjectId(item.productId),
+      // }));
+
+      let domainName;
+      if (process.env.NODE_ENV === "production") {
+        domainName = "https://jumpsquad-backend.vercel.app";
+      } else {
+        domainName = import.meta.env.VITE_API_URL;
+      }
+
+      const response = await axios.post(
+        `${domainName}/api/orders/create-order`,
+        orderData
+      );
+
+      if (response.status === 200) {
+        setOpen(false);
+      }
+    } catch (error) {
+      setOpen(false);
+      toast.error("Error saving order", {
+        autoClose: 500,
+      });
+      console.error("Error saving order:", error);
+    }
+    try {
+      let domainName;
+      if (process.env.NODE_ENV === "production") {
+        domainName = "https://jumpsquad-backend.vercel.app";
+      } else {
+        domainName = import.meta.env.VITE_API_URL;
+      }
+      const verifyResponse = await axios.get(
+        `${domainName}/api/orders/paypal/verify-payment/${orderID}`
+      );
+      if (verifyResponse.status === 200) {
+        toast.success("payment verified successfully",{
+          autoClose: 1000,
+          position: "bottom-right",
+        });
+        setCartItems([]);
+        navigate("/");
+      } else if (verifyResponse.status === 400) {
+        toast.error("payment not completed", {
+          autoClose: 1000,
+          position: "bottom-right",
+        });
+      }
+    } catch (error) {
+      toast.error("Error verifying payment", {
+        autoClose: 1000, position: "bottom-right",
+      });
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <>
-      <Modal
-        onClose={() => setOpen(false)}
-        isOpen={open}
-        onSubmit={closeCheckOut}
-        display="Order Confirmation !"
-        description={checkoutData}
-        buttonname="Checkout"
-      />
       <div className="master-container">
         <div className="card-cart cart">
           <label className="title">
@@ -81,7 +164,7 @@ const Cart = () => {
             <div className="checkout--footer">
               <label className="price">
                 <sup>₹</sup>
-                {price}
+                {totalPrice}
               </label>
 
               <button className="checkout-btn" onClick={openCheckOut}>
@@ -91,6 +174,12 @@ const Cart = () => {
           </div>
         )}
       </div>
+      <PayPalModal
+        isOpen={open}
+        onClose={closeModal}
+        amount={totalPrice}
+        onApprove={handleApprove}
+      />
     </>
   );
 };
