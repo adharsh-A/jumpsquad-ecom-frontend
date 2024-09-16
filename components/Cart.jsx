@@ -125,6 +125,10 @@ const Cart = () => {
           autoClose: 1000,
           position: "bottom-right",
         });
+        toast("order placed successfully", {
+          autoClose: 1000,
+          position: "bottom-right",
+      })
         setCartItems([]);
         navigate("/");
       } else if (verifyResponse.status === 400) {
