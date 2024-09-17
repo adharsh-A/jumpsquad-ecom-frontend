@@ -22,9 +22,12 @@ const Wishlist = lazy(() => import("../components/Wishlist.jsx"));
 const Orders = lazy(() => import("../components/Orders.jsx"));
  const PrivacyPolicy = lazy(() => import("../components/Privacy.jsx"));
 const TermsOfService = lazy(() => import("../components/TermsOfService.jsx"));
+const Order = lazy(() => import("../components/Order.jsx"));
 import Loading from "../components/UI/Loading.jsx";
 import { useAuth } from "../hooks/auth-hook.js";
 import { AuthContext } from "../context/auth-context.js";
+const AdminDashboard = lazy(() => import("../components/AdminDashboard.jsx"));
+
 
 const App = () => {
   const { token, role, login, logout, userId } = useAuth();
@@ -59,7 +62,6 @@ const App = () => {
             <Header />
             <Suspense fallback={<Loading />}>
               <Routes>
-                <Route path="/orders" element={<Orders />} />
                 <Route path="/" exact element={<Products />} />
                 {token && <Route path="/cart" exact element={<Cart />} />}
                 <Route path="/checkout" element={<CheckOut />} />
@@ -71,8 +73,13 @@ const App = () => {
                 <Route path="/results" element={<ResultsComponent />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsOfService />} />
-                {role === "admin" && <Route path="/admin" element={<ProductList />} />}
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/order/:orderId" element={<Order />} />
                 
+                {role === "admin" && <Route path="/admin" element={<ProductList />} />}
+                {role === "admin" && (
+                  <Route path="/dashboard/*" element={<AdminDashboard />} />
+                )}
 
               </Routes>
             </Suspense>

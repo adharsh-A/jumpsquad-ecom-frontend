@@ -1,0 +1,48 @@
+.order-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+.order-card {
+  border: wheat 2px solid;
+  border-radius: 20px;
+  padding: 20px;
+  justify-content: space-evenly;
+  align-items: center;
+  width: fit-content;
+  gap: 5px;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.34);
+  cursor: pointer;
+}
+.order-card>h3{
+    font-weight: 400;
+}
+.order-card > img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.order-card:hover {
+    transform: scale(1.05);
+  background-color: rgb(15, 16, 16);
+    border: rgba(238, 236, 234, 0.693) 2px solid;
+}
+.wrapper {
+  margin: 30px auto;
+  width: fit-content;
+  min-width: 300px;
+  border-radius: 30px;
+  background-color: rgba(245, 245, 220, 0.182);
+  padding: 30px;
+}
+.wrapper > h1 {
+  display: block;
+  text-align: center;
+}

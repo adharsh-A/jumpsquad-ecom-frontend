@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -20,6 +21,7 @@ const darkTheme = createTheme({
 });
 
 export default function Order() {
+  const navigate = useNavigate();
     const {userId}=React.useContext(AuthContext)
     const [row,setRow]=React.useState([])
     React.useEffect(() => {
@@ -32,13 +34,12 @@ export default function Order() {
                 } else {
                   domainName = import.meta.env.VITE_API_URL;
                 }
-                const response = await axios.get(`${domainName}/api/orders/get-order`,{
-                    userId
-                },
-            );
+                const response = await axios.get(`${domainName}/api/orders/get-order`, {
+                  params: { userId: userId }  // Query parameter
+              });
 
                 setRow(response.data);
-                console.log(row);
+                
             }catch(error){
                 toast.error(error)
                 console.log(error)
@@ -46,12 +47,17 @@ export default function Order() {
         }
         OrderDetails()
     },[]);
+
+    const handleOrder=(rowId)=>{
+        navigate(`/order/${rowId}`)
+    }
     return (
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
               <div className="table">
-    <TableContainer component={Paper} style={{ maxWidth: 550,display: "inline-block" }}>
-      <Table sx={{ minWidth: 550,maxWidth: 100 }} aria-label="simple table">
+
+    <TableContainer component={Paper} style={{ maxWidth: 750,display: "inline-block" }}>
+      <Table sx={{ minWidth: 350,maxWidth: 750 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>OrderId</TableCell>
@@ -63,15 +69,16 @@ export default function Order() {
         <TableBody>
           {row.map((row) => (
             <TableRow
-              key={row._id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              key={row.orderId}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 },cursor:"pointer" }}
+              onClick={()=>handleOrder(row.orderId)}
             >
-              <TableCell component="th" scope="row">
-                {row.orderId}
+              <TableCell component="th" scope="row" >
+                {row.orderId }
               </TableCell>
               <TableCell align="right">{row.total}</TableCell>
               <TableCell align="right">{row.status}</TableCell>
-              <TableCell align="right">{row.created}</TableCell>
+              <TableCell align="right">{new Date(row.createdAt).toLocaleString()}</TableCell>
             </TableRow>
           ))}
         </TableBody>
