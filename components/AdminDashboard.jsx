@@ -1,6 +1,15 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import { Box, Drawer, List, ListItem, ListItemText, Typography, AppBar, Toolbar } from "@mui/material";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
+import {
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  AppBar,
+  Toolbar,
+} from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -21,50 +30,87 @@ const drawerWidth = 240;
 export const AdminDashboard = () => {
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar position="fixed" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }} style={{backgroundColor: "#333", color: "#fff"}}>
+      <AppBar
+        position="fixed"
+        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+        style={{ backgroundColor: "black", color: "#fff", height : "80px" }}
+      >
         <Toolbar>
-          <Typography variant="h6" noWrap component="div"  >
+          <Typography variant="h5" noWrap component="div">
             Admin Dashboard
           </Typography>
           <Button color="inherit">Logout</Button>
         </Toolbar>
       </AppBar>
-      
+
       <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          "& .MuiDrawer-paper": { width: drawerWidth, boxSizing: "border-box", backgroundColor: "#333", color: "#fff" }
+          "& .MuiDrawer-paper": {
+            width: drawerWidth,
+            boxSizing: "border-box",
+            backgroundColor: "black",
+            color: "#fff",
+          },
         }}
         variant="permanent"
         anchor="left"
       >
         <Toolbar />
         <List>
-          <ListItem button component={Link} to="dashboard">
+          <ListItem button component={Link} to="dashboard"     sx={{
+      '&:hover': {
+        backgroundColor: '#444', // Change background on hover
+        color: '#fff',            // Change text color on hover
+      },
+    }}>
             <DashboardIcon sx={{ color: "white", mr: 2 }} />
             <ListItemText primary="Dashboard" />
           </ListItem>
-          <ListItem button component={Link} to="stats">
+          <ListItem button component={Link} to="stats"     sx={{
+      '&:hover': {
+        backgroundColor: '#444', // Change background on hover
+        color: '#fff',            // Change text color on hover
+      },
+    }}>
             <BarChartIcon sx={{ color: "white", mr: 2 }} />
             <ListItemText primary="Stats" />
           </ListItem>
-          <ListItem button component={Link} to="orders">
+          <ListItem button component={Link} to="orders"     sx={{
+      '&:hover': {
+        backgroundColor: '#444', // Change background on hover
+        color: '#fff',            // Change text color on hover
+      },
+    }}>
             <ShoppingCartIcon sx={{ color: "white", mr: 2 }} />
             <ListItemText primary="Orders" />
           </ListItem>
-          <ListItem button component={Link} to="products">
+          <ListItem button component={Link} to="products"     sx={{
+      '&:hover': {
+        backgroundColor: '#444', // Change background on hover
+        color: '#fff',            // Change text color on hover
+      },
+    }}>
             <InventoryIcon sx={{ color: "white", mr: 2 }} />
             <ListItemText primary="Products" />
           </ListItem>
-          <ListItem button component={Link} to="users">
+          <ListItem button component={Link} to="users"     sx={{
+      '&:hover': {
+        backgroundColor: '#444', // Change background on hover
+        color: '#fff',            // Change text color on hover
+      },
+    }}>
             <PeopleIcon sx={{ color: "white", mr: 2 }} />
             <ListItemText primary="Users" />
           </ListItem>
         </List>
       </Drawer>
 
-      <Box component="main" sx={{ flexGrow: 1, bgcolor: "#f4f4f4", p: 3 ,color: "#333"}}>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, bgcolor: "gray", color: "white" }}
+      >
         <Toolbar />
         <Routes>
           <Route path="dashboard" element={<Dashboard />} />
@@ -72,6 +118,7 @@ export const AdminDashboard = () => {
           <Route path="orders" element={<Orders />} />
           <Route path="products" element={<Products />} />
           <Route path="users" element={<Users />} />
+          <Route path="/" element={<Navigate to="dashboard" />} />
         </Routes>
       </Box>
     </Box>

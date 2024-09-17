@@ -76,9 +76,9 @@ const App = () => {
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/order/:orderId" element={<Order />} />
                 
-                {role === "admin" && <Route path="/admin" element={<ProductList />} />}
+                {role === "admin" && <Route path="/add" element={<ProductList />} />}
                 {role === "admin" && (
-                  <Route path="/dashboard/*" element={<AdminDashboard />} />
+                  <Route path="/admin/*" element={<AdminDashboard />} />
                 )}
 
               </Routes>
