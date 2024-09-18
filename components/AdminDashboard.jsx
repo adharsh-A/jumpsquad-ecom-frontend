@@ -10,6 +10,7 @@ import {
   AppBar,
   Toolbar,
 } from "@mui/material";
+
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -29,11 +30,13 @@ const drawerWidth = 240;
 
 export const AdminDashboard = () => {
   return (
+    <div className="admin-dashboard">
+
     <Box sx={{ display: "flex" }}>
       <AppBar
         position="fixed"
         sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-        style={{ backgroundColor: "black", color: "#fff", height : "80px" }}
+        style={{ backgroundColor: "black", color: "#fff", height: "80px" }}
       >
         <Toolbar>
           <Typography variant="h5" noWrap component="div">
@@ -59,58 +62,80 @@ export const AdminDashboard = () => {
       >
         <Toolbar />
         <List>
-          <ListItem button component={Link} to="dashboard"     sx={{
-      '&:hover': {
-        backgroundColor: '#444', // Change background on hover
-        color: '#fff',            // Change text color on hover
-      },
-    }}>
+          <ListItem
+            button
+            component={Link}
+            to="dashboard"
+            sx={{
+              "&:hover": {
+                backgroundColor: "#444", // Change background on hover
+                color: "#fff", // Change text color on hover
+              },
+            }}
+          >
             <DashboardIcon sx={{ color: "white", mr: 2 }} />
             <ListItemText primary="Dashboard" />
           </ListItem>
-          <ListItem button component={Link} to="stats"     sx={{
-      '&:hover': {
-        backgroundColor: '#444', // Change background on hover
-        color: '#fff',            // Change text color on hover
-      },
-    }}>
+          <ListItem
+            button
+            component={Link}
+            to="stats"
+            sx={{
+              "&:hover": {
+                backgroundColor: "#444", // Change background on hover
+                color: "#fff", // Change text color on hover
+              },
+            }}
+          >
             <BarChartIcon sx={{ color: "white", mr: 2 }} />
             <ListItemText primary="Stats" />
           </ListItem>
-          <ListItem button component={Link} to="orders"     sx={{
-      '&:hover': {
-        backgroundColor: '#444', // Change background on hover
-        color: '#fff',            // Change text color on hover
-      },
-    }}>
+          <ListItem
+            button
+            component={Link}
+            to="orders"
+            sx={{
+              "&:hover": {
+                backgroundColor: "#444", // Change background on hover
+                color: "#fff", // Change text color on hover
+              },
+            }}
+          >
             <ShoppingCartIcon sx={{ color: "white", mr: 2 }} />
             <ListItemText primary="Orders" />
           </ListItem>
-          <ListItem button component={Link} to="products"     sx={{
-      '&:hover': {
-        backgroundColor: '#444', // Change background on hover
-        color: '#fff',            // Change text color on hover
-      },
-    }}>
+          <ListItem
+            button
+            component={Link}
+            to="products"
+            sx={{
+              "&:hover": {
+                backgroundColor: "#444", // Change background on hover
+                color: "#fff", // Change text color on hover
+              },
+            }}
+          >
             <InventoryIcon sx={{ color: "white", mr: 2 }} />
             <ListItemText primary="Products" />
           </ListItem>
-          <ListItem button component={Link} to="users"     sx={{
-      '&:hover': {
-        backgroundColor: '#444', // Change background on hover
-        color: '#fff',            // Change text color on hover
-      },
-    }}>
+          <ListItem
+            button
+            component={Link}
+            to="users"
+            sx={{
+              "&:hover": {
+                backgroundColor: "#444", // Change background on hover
+                color: "#fff", // Change text color on hover
+              },
+            }}
+          >
             <PeopleIcon sx={{ color: "white", mr: 2 }} />
             <ListItemText primary="Users" />
           </ListItem>
         </List>
       </Drawer>
 
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: "gray", color: "white" }}
-      >
+      <Box component="main" sx={{ flexGrow: 1, color: "white" }}>
         <Toolbar />
         <Routes>
           <Route path="dashboard" element={<Dashboard />} />
@@ -122,6 +147,7 @@ export const AdminDashboard = () => {
         </Routes>
       </Box>
     </Box>
+        </div>
   );
 };
 

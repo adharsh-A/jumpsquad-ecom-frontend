@@ -2,3 +2,7 @@ a{
     text-decoration: none;
     color: white;
 }
+admin-dashboard{
+    display: flex;
+    position: relative;
+}

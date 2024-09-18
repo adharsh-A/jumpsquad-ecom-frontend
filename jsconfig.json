@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "shadcn-ui": ["./node_modules/@shadcn/ui/dist"],
+      "@mui/x-charts": ["./node_modules/@mui/x-charts/*"] // Add this line for MUI X Charts
+    }
+  }
+}
