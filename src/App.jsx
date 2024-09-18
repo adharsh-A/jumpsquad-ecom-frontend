@@ -1,4 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
+import { Analytics } from '@vercel/analytics/react'; // Import Vercel Analytics
+
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -37,7 +39,7 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 1000);
 
     // Cleanup the timer if the component unmounts
     return () => clearTimeout(timer);
@@ -83,6 +85,7 @@ const App = () => {
 
               </Routes>
             </Suspense>
+            <Analytics />
           </Router>
         )}
         <ToastContainer />
