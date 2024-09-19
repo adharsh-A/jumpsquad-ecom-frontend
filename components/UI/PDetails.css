@@ -13,7 +13,7 @@
 }
 .back-btn {
   display: flex;
-  height: 3em;
+  height:2rem;
   width: 70px;
   align-items: center;
   justify-content: center;
@@ -21,9 +21,10 @@
   border-radius: 3px;
   letter-spacing: 1px;
   transition: all 0.2s linear;
+  color: #000;
   cursor: pointer;
   border: none;
-  font-weight: 600;
+  font-weight: 200;
 }
 
 .back-btn > svg {
@@ -71,6 +72,8 @@
 }
 .banner-image > img {
   background-position: center;
+  aspect-ratio: 3/2;
+  object-fit: cover;
   height: 300px;
   width:fit-content;
   mix-blend-mode:  darken;
@@ -111,7 +114,6 @@ p {
   margin-right: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.1s ease;
-
 }
 
 .btn:hover {
@@ -137,7 +139,7 @@ p {
 
 
 .fill {
-  background: var(--accent);
+  background: rgb(75, 61, 35);
   color: wheat;
   filter: drop-shadow(0);
   font-weight: bold;

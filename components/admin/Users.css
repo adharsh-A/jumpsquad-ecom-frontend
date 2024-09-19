@@ -1,0 +1,31 @@
+.users-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute;
+    padding: 20px 20px;
+    background-color: rgba(0, 0, 0, 0);
+    height: 100vh;
+    width: 70%;
+    }
+
+    .heading-users>h1{
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        top: 20px;
+    }
+    .table-container{
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.418);
+        border-radius: 10px;
+        padding: 10px;
+        position: absolute;
+        margin-top:50px ;
+        min-width: 300px;
+        width: 600px;
+    }
+    .table-container:hover{
+        transform: scale(1.005);
+    }

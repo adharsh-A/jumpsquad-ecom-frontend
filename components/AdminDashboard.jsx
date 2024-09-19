@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
 import {
   Box,
   Drawer,
@@ -24,10 +24,18 @@ import Dashboard from "./admin/Dashboard.jsx";
 import Orders from "./admin/Orders.jsx";
 import Products from "./admin/Products.jsx";
 import Users from "./admin/Users.jsx";
+import { AuthContext } from "../context/auth-context.js";
 
 const drawerWidth = 240;
 
 export const AdminDashboard = () => {
+  const {logout} = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
   return (
     <div className="admin-dashboard">
 
@@ -41,7 +49,7 @@ export const AdminDashboard = () => {
           <Typography variant="h5" noWrap component="div">
             Admin Dashboard
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Button color="inherit" onClick={handleLogout}>Logout</Button>
         </Toolbar>
       </AppBar>
 

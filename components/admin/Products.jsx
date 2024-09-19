@@ -102,9 +102,8 @@ const Products = () => {
 </div>
 <div className="card-for-products" style={{marginLeft: "30px",display:"flex",gap:"20px",marginTop:"20px"}}>
 <Card
-          title="Total Orders"
-          value="140"
-          desc="21% more than last month"
+          title="Total Products"
+          value="9"
         />
                 <Card
           title="Total Orders"
@@ -114,7 +113,7 @@ const Products = () => {
 </div>
     <div className="products-container">
       <div className="heading-products">
-        <h1>Recent Products</h1>
+        <h1>All Products</h1>
         <div className="dialog-product" style={{ float: "right" }}>
         <Dialog>
       <DialogTrigger>

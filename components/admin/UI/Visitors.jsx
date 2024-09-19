@@ -21,10 +21,7 @@ const monthlyData = [
   { month: "Jun", visitors: 550 },
   { month: "Jul", visitors: 700 },
   { month: "Aug", visitors: 650 },
-  { month: "Sep", visitors: 600 },
-  { month: "Oct", visitors: 550 },
-  { month: "Nov", visitors: 500 },
-  { month: "Dec", visitors: 450 },
+
 ];
 
 // Data for sales by month
@@ -66,7 +63,7 @@ export function CombinedCharts() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="visitors" fill="#8884d8" />
+        <Bar dataKey="visitors" fill="gray" />
       </BarChart>
 
       {/* Pie Chart for Monthly Sales */}
