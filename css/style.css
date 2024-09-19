@@ -82,7 +82,7 @@ body {
 }
 
 .nav-link.active {
-  background-color: var(--primary);
+  background-color:  #12104dbb;
   color: whitesmoke; /* Change to your desired active color */
   border: 1px rgb(155, 104, 206) solid;
   box-shadow: 0px 0px 10px rgb(111, 62, 184);

@@ -6,7 +6,7 @@
   --accent: #4d4c6b;
 }
 .modal {
-    width: 300px;
+    width: 450px;
     height: fit-content;
     background: rgb(255, 255, 255);
     border-radius: 20px;
@@ -54,17 +54,19 @@
     font-weight: 600;
   }
   .primary {
-    background-color: var(--primary);
+    background-color: #12104dbb;
     color: white;
   }
   .primary:hover {
-    background-color: var(--background);
+    background-color: #12104dbb;
   }
   .secondary {
-    background-color: #ddd;
+    border: 1px solid #12104dbb;
+    background-color: #12104d6a;
   }
   .secondary:hover {
-    background-color: rgb(197, 197, 197);
+    background-color: #12104d62;
+    color: #12104d;
   }
   .exit-button {
     display: flex;

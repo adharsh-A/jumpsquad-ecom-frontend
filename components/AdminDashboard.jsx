@@ -21,7 +21,6 @@ import "./AdminDashboard.css";
 
 // Import admin dashboard components
 import Dashboard from "./admin/Dashboard.jsx";
-import Stats from "./admin/Stats.jsx";
 import Orders from "./admin/Orders.jsx";
 import Products from "./admin/Products.jsx";
 import Users from "./admin/Users.jsx";
@@ -79,20 +78,6 @@ export const AdminDashboard = () => {
           <ListItem
             button
             component={Link}
-            to="stats"
-            sx={{
-              "&:hover": {
-                backgroundColor: "#444", // Change background on hover
-                color: "#fff", // Change text color on hover
-              },
-            }}
-          >
-            <BarChartIcon sx={{ color: "white", mr: 2 }} />
-            <ListItemText primary="Stats" />
-          </ListItem>
-          <ListItem
-            button
-            component={Link}
             to="orders"
             sx={{
               "&:hover": {
@@ -139,7 +124,6 @@ export const AdminDashboard = () => {
         <Toolbar />
         <Routes>
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="stats" element={<Stats />} />
           <Route path="orders" element={<Orders />} />
           <Route path="products" element={<Products />} />
           <Route path="users" element={<Users />} />

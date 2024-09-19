@@ -28,7 +28,9 @@ const ProductCard = (props) => {
         <div className="card-footer">
           <span className="text-price">₹{props.item.price}</span>
 
-          <div style={{ display: "flex" }}>  
+          <div style={{ display: "flex",
+            color: "black"
+           }}>  
           <div className="card-button" onClick={props.addwishlist}>
             <svg
               width="15"

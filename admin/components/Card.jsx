@@ -48,6 +48,7 @@ const StyledWrapper = styled.div`
     margin-left: 10px;
     margin-right: 10px;
     mix-blend-mode: multiply;
+    z-index: 1;
   }
 
   .item-card p {
@@ -55,10 +56,11 @@ const StyledWrapper = styled.div`
     font-weight: 700;
     line-height: 20px;
     color: #666;
-  }
-
-  .item-card p.small {
-    font-size: 14px;
+    }
+    
+    .item-card p.small {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
   }
 
   .go-corner {
@@ -71,7 +73,7 @@ const StyledWrapper = styled.div`
     overflow: hidden;
     top: 0;
     right: 0;
-    background-color: var(--accent);
+    background-color:black;
     border-radius: 0 4px 0 32px;
   }
 
@@ -103,7 +105,7 @@ const StyledWrapper = styled.div`
     z-index: -1;
     top: -16px;
     right: -16px;
-    background: var(--accent);
+    background: black;
     height: 32px;
     width: 32px;
     border-radius: 32px;
@@ -153,16 +155,16 @@ const StyledWrapper = styled.div`
     box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
     top: -4px;
     border: 1px solid #ccc;
-    background-color: white;
-  }
-
+    background-color: #cccccc;
+    }
+    
   .item-card2:before {
     content: "";
     position: absolute;
     z-index: -1;
     top: -16px;
     right: -16px;
-    background: #00838d;
+    background-color: #cccccc;
     height: 32px;
     width: 32px;
     border-radius: 32px;
@@ -243,7 +245,7 @@ const StyledWrapper = styled.div`
 
   .item-card4:hover {
     border: 1px solid #cd3d73;
-  }
+    }
 
   .item-card4 h3 {
     margin-top: 8px;

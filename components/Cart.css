@@ -227,7 +227,7 @@
     align-items: center;
     width: 150px;
     height: 36px;
-    background: var(--primary);
+    background: rgba(208, 108, 210, 0.483);
     box-shadow: 0px 0.5px 0.5px #EFEFEF, 0px 1px 0.5px rgba(239, 239, 239, 0.5);
     border-radius: 7px;
     border: 0;
@@ -238,7 +238,7 @@
     transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
   }
   .checkout .checkout-btn:hover {
-    background: var(--secondary);
+    background: rgba(209, 77, 211, 0.483);
     transform: scale(1.05); /* Scale effect */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
 }

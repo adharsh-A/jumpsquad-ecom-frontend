@@ -3,7 +3,7 @@ import "./Card.css";
 
 const Card = (props) => {
   return (
-      <div className="stats shadow" style={{width: `${props.width}px`,height: `${props.height}px`}}>
+      <div className="stats shadow" style={{width: `${props.width}px`,height: `${props.height}px`,zIndex: `${props.zIndex}`}}>
         <div className="stat">
           <div className="stat-title">{props.title}</div>
           <div className="stat-value">{props.value}</div>

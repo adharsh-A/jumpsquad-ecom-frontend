@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import SearchBar from "../components/UI/SearchBar";
 import Input from "./UI/Input";
-import Animation from "../components/Animation";
 import "../css/style.css";
 import { AuthContext } from "../context/auth-context";
 import Modal from "./UI/Modal";

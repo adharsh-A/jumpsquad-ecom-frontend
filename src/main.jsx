@@ -4,8 +4,10 @@ import App from './App.jsx'
 import './index.css';
 import './tailwind.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+
+
+ReactDOM.createRoot(document.getElementById('app')).render(
   <React.StrictMode>
-    <App />
+          <App />
   </React.StrictMode>,
 )
