@@ -43,10 +43,10 @@ export const AdminDashboard = () => {
       <AppBar
         position="fixed"
         sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-        style={{ backgroundColor: "black", color: "#fff", height: "80px" }}
+        style={{ backgroundColor: "black", color: "#fff", height: "65px" }}
       >
         <Toolbar>
-          <Typography variant="h5" noWrap component="div">
+          <Typography variant="h6" noWrap component="div">
             Admin Dashboard
           </Typography>
           <Button color="inherit" onClick={handleLogout}>Logout</Button>
