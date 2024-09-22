@@ -24,8 +24,6 @@ export const CartProvider = ({ children }) => {
     setWishlist(items);
   };
 
-  //adding wishlist when wishlist frontend gets updated
-  useEffect(() => {}, [wishlist]);
   //add to wishlist frontend
   const addToWishlist = (item) => {
     if (!item.id) {

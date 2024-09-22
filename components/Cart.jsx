@@ -167,8 +167,7 @@ const Cart = () => {
             </div>
             <div className="checkout--footer">
               <label className="price">
-                <sup>₹</sup>
-                {totalPrice}
+                ₹{totalPrice}
               </label>
 
               <button className="checkout-btn" onClick={openCheckOut}>

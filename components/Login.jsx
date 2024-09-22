@@ -2,11 +2,14 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/auth-context";
+import { useAuth0 } from "@auth0/auth0-react"; // Import Auth0 hook
 import "./Login.css";
 import { toast } from "react-toastify";
 /* 	import { Modal,ModalDialog,ModalClose,Typography } from "@mui/joy";
  */
 const Login = (props) => {
+  const { loginWithRedirect } = useAuth0(); // Use Auth0 hook for login
+
   const auth = useContext(AuthContext);
   const [isLogin, setLogin] = useState(true);
   const [error, setError] = useState();
@@ -291,7 +294,7 @@ if(process.env.NODE_ENV === "production"){
 
           <div className="social-icons">
             {/* Social icons */}
-            <button title="Log in with Google" className="icon">
+            <button title="Log in with Google" onClick={() => loginWithRedirect()} className="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 32 32"

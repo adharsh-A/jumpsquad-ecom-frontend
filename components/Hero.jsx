@@ -2,6 +2,7 @@ import React from "react"
 import Animation from "../components/Animation";
 import "../css/style.css"
 import Button from "./UI/Button";
+import { toast } from "react-toastify";
 
 const Hero = (props) => {
   return (

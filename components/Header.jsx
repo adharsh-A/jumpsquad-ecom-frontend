@@ -84,7 +84,11 @@ const Header = (props) => {
       <nav className="header flex">
         <div className="logo-img">
           <Link exact to="/">
+          <div className="class" style={{display: "flex", alignItems: "center"}}>
+
             <img src="/images/brand-logo1.png" alt="" className="logo" />
+            {/* <h6>(demo mode)</h6> */}
+          </div>
           </Link>
         </div>
         <Input />

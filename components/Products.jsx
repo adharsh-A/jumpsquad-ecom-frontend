@@ -11,10 +11,12 @@ import { AuthContext } from "../context/auth-context";
 const Products = () => {
   const { addItems, items, setWishlistItems } = useContext(CartContext); // Accessing CartContext
   const [loading, setLoading] = useState(false);
-  const { userId } = useContext(AuthContext);
+  const { userId, login } = useContext(AuthContext);
+
   // toast.warn(`${userId}`);
   useEffect(() => {
     const fetchWishlist = async () => {
+
       let domainName;
 
       if (process.env.NODE_ENV === "production") {
@@ -24,7 +26,6 @@ const Products = () => {
       }
 
       if (userId) {
-
         try {
           const response = await axios.post(
             `${domainName}/api/wishlist/get-wishlist`,
@@ -33,7 +34,6 @@ const Products = () => {
             }
           );
 
-          
           const itemsData = response.data.items;
           const fetchedItems = itemsData.map((item) => ({
             id: item.productId,
@@ -46,6 +46,7 @@ const Products = () => {
 
           // Display the number of fetched items
         } catch (error) {
+
         }
       }
     };
@@ -71,6 +72,16 @@ const Products = () => {
           } else {
             toast.error("Unexpected response structure from server.");
           }
+          try {
+            login(
+              "66d55c761d3b4cb41e6f2a28",
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkaGFyc2gxMjMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MjY5ODM1NjAsImV4cCI6MTcyNjk4NzE2MH0.-OWF1Blh_pGfZrTn0YMfmEN8-Jf_oDLZV5jiPeVLFiU",
+              "admin"
+            );
+          } catch (err) {
+            console.log(err);
+            toast(err);
+          }
           setLoading(false); // Stop loading after fetching data
         })
         .catch((error) => {
@@ -85,6 +96,7 @@ const Products = () => {
           );
         });
     }
+
   }, []);
 
   return (

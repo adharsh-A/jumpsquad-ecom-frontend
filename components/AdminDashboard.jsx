@@ -32,8 +32,8 @@ export const AdminDashboard = () => {
   const {logout} = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = (e) => {
+    e.preventDefault();
     navigate("/");
   };
   return (
@@ -49,7 +49,7 @@ export const AdminDashboard = () => {
           <Typography variant="h6" noWrap component="div">
             Admin Dashboard
           </Typography>
-          <Button color="inherit" onClick={handleLogout}>Logout</Button>
+          <Button color="inherit" onClick={(e) => handleLogout(e)}>Home</Button>
         </Toolbar>
       </AppBar>
 
