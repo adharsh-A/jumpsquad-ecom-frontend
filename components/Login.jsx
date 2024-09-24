@@ -11,6 +11,7 @@ const Login = (props) => {
   const { loginWithRedirect } = useAuth0(); // Use Auth0 hook for login
 
   const auth = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(false);
   const [isLogin, setLogin] = useState(true);
   const [error, setError] = useState();
 
@@ -31,6 +32,7 @@ const Login = (props) => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const newErrors = {};
 
@@ -91,12 +93,14 @@ if(process.env.NODE_ENV === "production"){
       // Handle successful login/signup
       auth.login(responseData.userId, responseData.token, responseData.role);
       navigate("/");
+      setIsLoading(false);
     } catch (err) {
       toast.error(err, {
         position: "bottom-right",
         autoClose: 2000,
       });
       console.log(err);
+      setIsLoading(false);
     }
   };
 
@@ -281,7 +285,7 @@ if(process.env.NODE_ENV === "production"){
               )}
             </div>
 
-            <button className="sign" type="submit">
+            <button className="sign" type="submit" disabled={isLoading}>
               {isLogin ? "Login" : "Register"}
             </button>
           </form>
